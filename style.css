@@ -14,6 +14,10 @@ button,
     background-color: #e5e7eb;
 }
 
+body {
+    font-family: 'Ubuntu', 'Kanit', 'Roboto', 'Merriweather', sans-serif, serif;
+}
+
 
 /*
 **********************************************************************
