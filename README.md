@@ -9,27 +9,33 @@ Idea was to make page similar to:
 )
 
 Page is similar, but with added pictures to fill some gaps, and to make it look better.
-Pictures used on page are from:
+Pictures used on page are from 
 
-***Marek Piwnicki***:    + IG - https://www.instagram.com/marekpiwnicki/
-                         + Unsplash - https://unsplash.com/@marekpiwnicki
+***Marek Piwnicki***:    
++ [Instagram](https://www.instagram.com/marekpiwnicki/)
++ [Unsplash](https://unsplash.com/@marekpiwnicki)
 
-***Polina Kuzovkova***:  + IG - https://www.instagram.com/p_kuzovkova/
-                         + Unsplash - https://unsplash.com/@p_kuzovkova
+***Polina Kuzovkova***:  
++ [Instagram](https://www.instagram.com/p_kuzovkova/)
++ [Unsplash](https://unsplash.com/@p_kuzovkova)
 
-***Jonathan Arbely***:   + IG - https://www.instagram.com/disruptpreneur/
-                         + Unsplash - https://unsplash.com/@jonathanarbely 
+***Jonathan Arbely***:   
++ [Instagram](https://www.instagram.com/disruptpreneur/)
++ [Unsplash](https://unsplash.com/@jonathanarbely) 
 
-***César López***:       + IG - https://www.instagram.com/Kayzar94/
-                         + Twitter - https://twitter.com/Kayzar94
-                         + Unsplash - https://unsplash.com/@kayzar94
+***César López***:       
++ [Instagram](https://www.instagram.com/Kayzar94/)
++ [Twitter](https://twitter.com/Kayzar94)
++ [Unsplash](https://unsplash.com/@kayzar94)
 
-***Siamak***:            + IG - https://www.instagram.com/siamak.arts/
-                         + Twitter - https://twitter.com/sia_mac
-                         + Unsplash - https://unsplash.com/@onlysiamak
+***Siamak***:            
++ [Instagram](https://www.instagram.com/siamak.arts/)
++ [Twitter](https://twitter.com/sia_mac)
++ [Unsplash](https://unsplash.com/@onlysiamak)
 
 
 Unused image by:
 
-***Pramod Tiwari***:     + IG - https://www.instagram.com/theskywas.pink/
-                         + Unsplash - https://unsplash.com/@pramodtiwari
+***Pramod Tiwari***:     
++ [Instagram](https://www.instagram.com/theskywas.pink/)
++ [Unsplash](https://unsplash.com/@pramodtiwari)
