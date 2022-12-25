@@ -83,10 +83,10 @@ function playOneRound(playerSelection, computerSelection) {
 }
 
 
-function game(playerChoice) {
+function game() {
 
     for (let i = 0; i < 5; i++)
-        playOneRound(playerChoice, getComputerChoice());
+        playOneRound(prompt('Enter selection'), getComputerChoice());
 
     if (resultComputer > resultPlayer)
         console.log(`Computer wins with result : ${resultComputer} - ${resultPlayer}`);
