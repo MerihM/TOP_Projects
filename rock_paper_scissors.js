@@ -26,7 +26,6 @@ function choiceName(num) {
 function playOneRound(playerSelection, computerSelection) {
 
     let player, playerLower = playerSelection.toLowerCase();
-    console.log(playerLower);
     if (playerLower === 'rock')
         player = choiceName(1);
     else if (playerLower === 'paper')
@@ -42,22 +41,54 @@ function playOneRound(playerSelection, computerSelection) {
         return 'Draw!!!';
     else {
         if ((player === 'Scissors' && computerSelection === 'Rock') || (player === 'Rock' && computerSelection === 'Scissors')) {
-            if (player === 'Scissors')
-                return ('Lose!!! ' + outcomeOne);
-            else
-                return ('Win!!! ' + outcomeOne);
+            if (player === 'Scissors') {
+                console.log('Lose!!! ' + outcomeOne);
+                return 1;
+            }
+
+            else {
+                console.log('Win!!! ' + outcomeOne);
+                return -1;
+            }
+
         }
         else if ((player === 'Paper' && computerSelection === 'Rock') || (player === 'Rock' && computerSelection === 'Paper')) {
-            if (player === 'Rock')
-                return ('Lose!!! ' + outcomeTwo);
-            else
-                return ('Win!!! ' + outcomeTwo);
+            if (player === 'Rock') {
+                console.log('Lose!!! ' + outcomeTwo);
+                return 1;
+            }
+
+            else {
+                console.log('Win!!! ' + outcomeTwo);
+                return -1;
+            }
+
         }
         else {
-            if (player === 'Paper')
-                return ('Lose!!! ' + outcomeThree);
-            else
-                return ('Win!!! ' + outcomeThree);
+            if (player === 'Paper') {
+                console.log('Lose!!! ' + outcomeThree);
+                return 1;
+            }
+
+            else {
+                console.log('Win!!! ' + outcomeThree);
+                return -1;
+            }
+
         }
     }
+}
+
+
+function game(playerChoice) {
+
+    let result = 0;
+    for (let i = 0; i < 5; i++)
+        result += playOneRound(playerChoice, getComputerChoice());
+
+    let resultPlayer, resultComputer;
+    if (result > 0)
+        console.log(`Player wins with score ${resultPlayer} - ${resultComputer}`);
+    else
+        console.log(`Computer wins with score ${resultComputer} - ${resultPlayer}`);
 }
