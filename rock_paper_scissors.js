@@ -23,6 +23,9 @@ function choiceName(num) {
 
 // Function that plays one round of Rock-Paper-Scissors
 
+
+let resultPlayer = 0, resultComputer = 0;
+
 function playOneRound(playerSelection, computerSelection) {
 
     let player, playerLower = playerSelection.toLowerCase();
@@ -38,41 +41,41 @@ function playOneRound(playerSelection, computerSelection) {
     // TODO optimize logic, conditions too long
     // IDEA: Compare numbers, that will be easier
     if (player === computerSelection)
-        return 'Draw!!!';
+        console.log("Draw!!");
     else {
         if ((player === 'Scissors' && computerSelection === 'Rock') || (player === 'Rock' && computerSelection === 'Scissors')) {
             if (player === 'Scissors') {
                 console.log('Lose!!! ' + outcomeOne);
-                return 1;
+                resultComputer++;
             }
 
             else {
                 console.log('Win!!! ' + outcomeOne);
-                return -1;
+                resultPlayer++;
             }
 
         }
         else if ((player === 'Paper' && computerSelection === 'Rock') || (player === 'Rock' && computerSelection === 'Paper')) {
             if (player === 'Rock') {
                 console.log('Lose!!! ' + outcomeTwo);
-                return 1;
+                resultComputer++;
             }
 
             else {
                 console.log('Win!!! ' + outcomeTwo);
-                return -1;
+                resultPlayer++;
             }
 
         }
         else {
             if (player === 'Paper') {
                 console.log('Lose!!! ' + outcomeThree);
-                return 1;
+                resultComputer++;
             }
 
             else {
                 console.log('Win!!! ' + outcomeThree);
-                return -1;
+                resultPlayer++;
             }
 
         }
@@ -82,13 +85,16 @@ function playOneRound(playerSelection, computerSelection) {
 
 function game(playerChoice) {
 
-    let result = 0;
     for (let i = 0; i < 5; i++)
-        result += playOneRound(playerChoice, getComputerChoice());
+        playOneRound(playerChoice, getComputerChoice());
 
-    let resultPlayer, resultComputer;
-    if (result > 0)
-        console.log(`Player wins with score ${resultPlayer} - ${resultComputer}`);
+    if (resultComputer > resultPlayer)
+        console.log(`Computer wins with result : ${resultComputer} - ${resultPlayer}`);
+    else if (resultPlayer > resultComputer) {
+        console.log(`Player wins with result ${resultPlayer} - ${resultComputer}`);
+    }
     else
-        console.log(`Computer wins with score ${resultComputer} - ${resultPlayer}`);
+        console.log(`Draw with result : ${resultComputer} - ${resultPlayer}`);
+
+    resultComputer = resultPlayer = 0;
 }
