@@ -28,7 +28,7 @@ let resultPlayer = 0, resultComputer = 0;
 
 function playOneRound(playerSelection, computerSelection) {
 
-    let player, playerLower = playerSelection.toLowerCase();
+    let player, playerLower = playerSelection.toLowerCase(), numberPlayer, numberComputer;
     if (playerLower === 'rock')
         player = choiceName(1);
     else if (playerLower === 'paper')
@@ -39,7 +39,6 @@ function playOneRound(playerSelection, computerSelection) {
     const outcomeOne = 'Rock beats Scissors', outcomeTwo = 'Paper beats Rock', outcomeThree = 'Scissors beat Paper';
 
     // TODO optimize logic, conditions too long
-    // IDEA: Compare numbers, that will be easier
     if (player === computerSelection)
         console.log("Draw!!");
     else {
@@ -83,18 +82,44 @@ function playOneRound(playerSelection, computerSelection) {
 }
 
 
-function game() {
+// function game() {
 
-    for (let i = 0; i < 5; i++)
-        playOneRound(prompt('Enter selection'), getComputerChoice());
+//     for (let i = 0; i < 5; i++)
+//         playOneRound(prompt('Enter selection'), getComputerChoice());
 
-    if (resultComputer > resultPlayer)
-        console.log(`Computer wins with result : ${resultComputer} - ${resultPlayer}`);
-    else if (resultPlayer > resultComputer) {
-        console.log(`Player wins with result ${resultPlayer} - ${resultComputer}`);
-    }
-    else
-        console.log(`Draw with result : ${resultComputer} - ${resultPlayer}`);
+//     if (resultComputer > resultPlayer)
+//         console.log(`Computer wins with result : ${resultComputer} - ${resultPlayer}`);
+//     else if (resultPlayer > resultComputer) {
+//         console.log(`Player wins with result ${resultPlayer} - ${resultComputer}`);
+//     }
+//     else
+//         console.log(`Draw with result : ${resultComputer} - ${resultPlayer}`);
 
-    resultComputer = resultPlayer = 0;
+//     resultComputer = resultPlayer = 0;
+// }
+
+
+
+const btnSelection = document.querySelectorAll('button');
+const scorePlayer = document.querySelector('#scorePlayer');
+const scoreComputer = document.querySelector('#scoreComputer');
+
+btnSelection.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        playOneRound(btn.getAttribute('name'), getComputerChoice());
+        console.log(resultComputer);
+        console.log(resultPlayer);
+        scoreComputer.innerText = resultComputer;
+        scorePlayer.innerText = resultPlayer;
+    })
+})
+
+
+function playGame(player, computer) {
+    let resComp = 0, resPla = 0;
+
+    if (player === computer)
+        return;
+    if (player !== 0 && player < computer)
+        resComp++;
 }

@@ -1,0 +1,36 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.rps_game {
+    background-color: rgba(26, 132, 86, 0.291);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 50vh;
+    margin-top: 15%;
+    flex-direction: column;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 30%;
+    padding: 0 0 10vh 0;
+    /* border: 1px solid black; */
+}
+
+.choices {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 30%;
+    /* border: 1px solid black; */
+    padding: 5vh 0;
+}
+
+.contScore {
+    text-align: center;
+}
