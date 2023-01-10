@@ -3,7 +3,8 @@ const radioButtons = document.querySelectorAll('input[name="size"]');
 
 radioButtons.forEach(element => {
     element.addEventListener('change', () => {
-        //makeDivGrid(element.value);
+        deletePreviousGrid(element.value);
+        makeDivGrid(element.value);
     })
 });
 
@@ -16,3 +17,7 @@ function makeDivGrid(size) {
     }
 }
 
+function deletePreviousGrid(size) {
+    let toDelete = document.querySelectorAll('.blackSquare');
+    toDelete.forEach(element => element.remove());
+}
