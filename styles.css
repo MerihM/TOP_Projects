@@ -14,3 +14,7 @@ div {
     grid-template-columns: repeat(16, 1fr);
     grid-template-rows: repeat(16, 1fr);
 }
+
+.blackSquare {
+    background-color: blue;
+}
