@@ -10,22 +10,35 @@
 </head>
 
 <body onload="makeDivGrid(16)">
-
-    <div class="gridContainer" id="gridContainer">
-
+    <div class="contentContainer">
+        <div class="choice">
+            <h3>Select grid size:</h3>
+            <div class="inputLabel">
+                <input type="radio" name="size" id="16" value="16" checked>
+                <label for="16">16 x 16</label>
+            </div>
+            <div class="inputLabel">
+                <input type="radio" name="size" id="32" value="32">
+                <label for="32">32 x 32</label>
+            </div>
+            <div class="inputLabel">
+                <input type="radio" name="size" id="64" value="64">
+                <label for="64">64 x 64</label>
+            </div>
+        </div>
+        <div class="gridContainer" id="gridContainer"></div>
+        <div class="choice">
+            <h3>Select color:</h3>
+            <div class="inputLabel">
+                <input type="radio" name="colorSelect" id="black" value="black" checked>
+                <label for="black">Black</label>
+            </div>
+            <div class="inputLabel">
+                <input type="radio" name="colorSelect" id="random" value="random">
+                <label for="random">Random</label>
+            </div>
+        </div>
     </div>
-
-    <div class="choice">
-        <label for="16">16</label>
-        <input type="radio" name="size" id="16" value="16" checked>
-        <label for="32">32</label>
-        <input type="radio" name="size" id="32" value="32">
-        <label for="64">64</label>
-        <input type="radio" name="size" id="64" value="64">
-    </div>
-
-
-
     <script src="./etchaSketch.js"></script>
 </body>
 

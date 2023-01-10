@@ -4,10 +4,15 @@ const radioButtons = document.querySelectorAll('input[name="size"]');
 
 gridDiv.addEventListener('click', () => addHoverEffect());
 
+
+function selectColor() {
+
+}
+
 function addHoverEffect() {
     let divSquare = document.querySelectorAll('.divSquare');
     divSquare.forEach(element => {
-        element.addEventListener('mouseover', () => element.style.cssText = 'background-color:red')
+        element.addEventListener('mouseenter', () => element.style.cssText = 'background-color:red')
     })
 }
 
@@ -25,7 +30,6 @@ function makeDivGrid(size) {
         gridSquare.classList.add('divSquare');
         gridDiv.append(gridSquare);
     }
-    // addHoverEffect();
 }
 
 function deletePreviousGrid() {
