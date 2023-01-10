@@ -1,4 +1,11 @@
 const gridDiv = document.querySelector('#gridContainer');
+const radioButtons = document.querySelectorAll('input[name="size"]');
+
+radioButtons.forEach(element => {
+    element.addEventListener('change', () => {
+        //makeDivGrid(element.value);
+    })
+});
 
 
 function makeDivGrid(size) {
