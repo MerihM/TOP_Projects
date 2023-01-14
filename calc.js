@@ -5,7 +5,7 @@ const clear = document.querySelector('.clear');
 const btnOperators = document.querySelectorAll('.operators');
 const equal = document.querySelector('.equal');
 let first, second, operationBefore = false, operation = '',
-    operatorCalled = false, equalCalled = false, operationText = '', operationClick = false;
+    operatorCalled = false, equalCalled = false, operationText = '', operationClick = false, addSecond = false;
 
 
 /*
@@ -20,6 +20,7 @@ let first, second, operationBefore = false, operation = '',
 clear.addEventListener('click', () => {
     lowerScreen.innerText = '';
     upperScreen.innerText = '';
+    first = second = null;
 })
 
 equal.addEventListener('click', () => equals());
@@ -82,7 +83,8 @@ function switchOperation() {
 }
 
 function equals() {
-
+    if (operationClick)
+        return;
     let num = Math.round(switchOperation() * 100) / 100;
     if (!num) {
         lowerScreen.innerText = '';
