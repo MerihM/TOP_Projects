@@ -4,7 +4,7 @@ const lowerScreen = document.querySelector('.letterBig');
 const clear = document.querySelector('.clear');
 const btnOperators = document.querySelectorAll('.operators');
 const equal = document.querySelector('.equal');
-let first, second, operationBefore = false, operation = '', operatorCalled = false;
+let first, second, operationBefore = false, operation = '', operatorCalled = false, equalCalled = false, operationText = '';
 
 
 /*
@@ -41,10 +41,13 @@ for (let btn of buttons) {
 
 
 function assignmentScreens(op) {
+    console.log(op);
     operation = op.value;
-    upperScreen.innerText = (first + " " + op.innerText);
+    operationText = op.innerText;
+    upperScreen.innerText = (first + " " + operationText);
     operationBefore = true;
     operatorCalled = true;
+    equalCalled = false;
 }
 
 function operatorCalculation(op) {
@@ -60,7 +63,8 @@ function operatorCalculation(op) {
 }
 
 function switchOperation() {
-    second = lowerScreen.innerText * 1;
+    if (!equalCalled)
+        second = lowerScreen.innerText * 1;
     switch (operation) {
         case '+':
             return first + second;
@@ -74,18 +78,22 @@ function switchOperation() {
 }
 
 function equals() {
-    let num = Math.round(switchOperation() * 100) / 100;
 
+    let num = Math.round(switchOperation() * 100) / 100;
     if (!num) {
         lowerScreen.innerText = '';
         upperScreen.innerText = '';
         return;
     }
-
+    if (equalCalled) {
+        upperScreen.innerText = lowerScreen.innerText + ' ' + operationText + ' ';
+        first = num;
+        num = Math.round(switchOperation() * 100) / 100;
+    }
     lowerScreen.innerText = num;
     upperScreen.innerText += " " + second + " " + " = ";
-    if (operatorCalled)
-        operatorCalled = false;
+    equalCalled = true;
+    operatorCalled = false;
 }
 
 function writeNumber(e) {
