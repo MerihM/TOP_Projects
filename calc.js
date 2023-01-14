@@ -4,7 +4,8 @@ const lowerScreen = document.querySelector('.letterBig');
 const clear = document.querySelector('.clear');
 const btnOperators = document.querySelectorAll('.operators');
 const equal = document.querySelector('.equal');
-let first, second, operationBefore = false, operation = '', operatorCalled = false, equalCalled = false, operationText = '';
+let first, second, operationBefore = false, operation = '',
+    operatorCalled = false, equalCalled = false, operationText = '', operationClick = false;
 
 
 /*
@@ -52,14 +53,17 @@ function assignmentScreens(op) {
 
 function operatorCalculation(op) {
 
-    if (!operatorCalled) {
-        first = lowerScreen.innerText * 1;
-        assignmentScreens(op);
+    if (!operationClick) {
+        if (!operatorCalled) {
+            first = lowerScreen.innerText * 1;
+            assignmentScreens(op);
+        }
+        else {
+            first = switchOperation();
+            assignmentScreens(op);
+        }
     }
-    else {
-        first = switchOperation();
-        assignmentScreens(op);
-    }
+    operationClick = true;
 }
 
 function switchOperation() {
@@ -94,6 +98,7 @@ function equals() {
     upperScreen.innerText += " " + second + " " + " = ";
     equalCalled = true;
     operatorCalled = false;
+    operationClick = false;
 }
 
 function writeNumber(e) {
@@ -101,4 +106,5 @@ function writeNumber(e) {
         lowerScreen.innerText = '';
     lowerScreen.innerText += e.innerText;
     operationBefore = false;
+    operationClick = false;
 }
