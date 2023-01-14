@@ -1,6 +1,7 @@
-.screen {
-    height: 8vh;
-    border: 1px solid black;
+body {
+    display: flex;
+    justify-content: center;
+    padding-top: 20vh;
 }
 
 .calculator {
@@ -11,6 +12,11 @@
     gap: 1vh;
     border: 1px solid black;
     padding: 1vw;
+}
+
+.screen {
+    height: 8vh;
+    border: 1px solid black;
 }
 
 .buttonsContainer {
