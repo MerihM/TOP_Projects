@@ -7,10 +7,38 @@ const equal = document.querySelector('.equal');
 let first, second, operationBefore = false, operation = '', opCalled = false;
 
 
+/*
+=================================================================================================================
+
+                                            Event listeners
+                        
+=================================================================================================================
+*/
+
+
+clear.addEventListener('click', () => {
+    lowerScreen.innerText = '';
+    upperScreen.innerText = '';
+})
+
 equal.addEventListener('click', () => equals());
+
 for (let e of btnOperators) {
     e.addEventListener('click', () => operatorCalculation(e));
 }
+
+for (let btn of buttons) {
+    btn.addEventListener('click', () => writeNumber(btn));
+}
+
+/*
+=================================================================================================================
+
+                                            Functions
+                        
+=================================================================================================================
+*/
+
 
 function operatorCalculation(op) {
     first = lowerScreen.innerText * 1;
@@ -46,15 +74,6 @@ function equals() {
             upperScreen.innerText += " " + second + " " + " = ";
             break;
     }
-}
-
-clear.addEventListener('click', () => {
-    lowerScreen.innerText = '';
-    upperScreen.innerText = '';
-})
-
-for (let btn of buttons) {
-    btn.addEventListener('click', () => writeNumber(btn));
 }
 
 function writeNumber(e) {
