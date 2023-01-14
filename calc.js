@@ -3,35 +3,48 @@ const upperScreen = document.querySelector('.letterSmall');
 const lowerScreen = document.querySelector('.letterBig');
 const clear = document.querySelector('.clear');
 const btnOperators = document.querySelectorAll('.operators');
-let first, second, operationBefore = false;
+const equal = document.querySelector('.equal');
+let first, second, operationBefore = false, operation = '', opCalled = false;
 
+
+equal.addEventListener('click', () => equals());
 for (let e of btnOperators) {
     e.addEventListener('click', () => operatorCalculation(e));
 }
 
 function operatorCalculation(op) {
-    if (!lowerScreen.innerText)
-        return;
-    console.log('I CALCULATE ' + op.innerText);
-    if (!first)
-        first = lowerScreen.innerText * 1;
-    upperScreen.innerText = lowerScreen.innerText + ' ' + op.innerText;
+    first = lowerScreen.innerText * 1;
+    operation = op.value;
+    upperScreen.innerText = (first + " " + op.innerText);
     operationBefore = true;
-    console.log(first);
+    opCalled = true;
 }
 
-function equals(nu1, nu2, operator) {
-    switch (operator) {
-        case 'div':
-            return (nu1 / nu2);
-        case 'time':
-            return (nu1 * nu2);
+function equals() {
+    let num;
+    second = lowerScreen.innerText * 1;
+
+    switch (operation) {
         case '+':
-            return (nu1 + nu2);
+            num = first + second;
+            lowerScreen.innerText = Math.round(num * 100) / 100;
+            upperScreen.innerText += " " + second + " " + " = ";
+            break;
         case '-':
-            return (nu1 - nu2);
-        default:
-            return;
+            num = first - second;
+            lowerScreen.innerText = Math.round(num * 100) / 100;
+            upperScreen.innerText += " " + second + " " + " = ";
+            break;
+        case 'time':
+            num = first * second;
+            lowerScreen.innerText = Math.round(num * 100) / 100;
+            upperScreen.innerText += " " + second + " " + " = ";
+            break;
+        case 'div':
+            num = (first / second);
+            lowerScreen.innerText = Math.round(num * 100) / 100;
+            upperScreen.innerText += " " + second + " " + " = ";
+            break;
     }
 }
 
