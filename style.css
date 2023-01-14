@@ -1,0 +1,26 @@
+.screen {
+    height: 8vh;
+    border: 1px solid black;
+}
+
+.calculator {
+    width: 30vw;
+    height: 50vh;
+    display: grid;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 1vh;
+    border: 1px solid black;
+    padding: 1vw;
+}
+
+.buttonsContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1vw;
+}
+
+.topButtons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1vw;
+}
