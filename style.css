@@ -17,6 +17,10 @@ body {
 .screen {
     height: 8vh;
     border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    padding-right: 1vw;
 }
 
 .buttonsContainer {
@@ -29,4 +33,9 @@ body {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1vw;
+}
+
+.letterSmall {
+    font-size: smaller;
+    padding-top: 1%;
 }
