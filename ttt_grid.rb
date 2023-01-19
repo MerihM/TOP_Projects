@@ -43,21 +43,21 @@ class DrawGrid
             verticalWithSymbol(pos, sym)
             horizontal
         end
-        def draw(posX = 0, posY = 0, sym = 'X') 
+        def draw(posY = 2, posX = 2, sym = 'X') 
             puts `clear`
-            case posX
+            case posY
             when 0
-                vertical_horizontal(posY, sym)
+                vertical_horizontal(posX, sym)
                 for i in 1..2
                     vertical_horizontal
                 end
             when 1
                 vertical_horizontal
-                vertical_horizontal(posY, sym)
+                vertical_horizontal(posX, sym)
                 vertical_horizontal
             when 2
                 2.times{vertical_horizontal}
-                vertical_horizontal(posY, sym)
+                vertical_horizontal(posX, sym)
             end
         end
         public
