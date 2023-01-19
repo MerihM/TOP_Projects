@@ -5,8 +5,8 @@ class Menu
     $line = '-'
     $up_line = '|'
     def horizontal
-        for i in 1..43
-            if i%11 == 0
+        for i in 1..29
+            if i%10 == 0
                 print '+'
             else
                 print $line
@@ -15,8 +15,8 @@ class Menu
         puts ' '
     end
     def vertical
-        for i in 1..3
-            for j in 1..10
+        for i in 1..2
+            for j in 1..9
                 print " "
             end
             print $up_line
@@ -31,7 +31,7 @@ class Menu
     end
     def draw 
         puts `clear`
-        for i in 1..3
+        for i in 1..2
             vertical_horizontal
         end
         for i in 1..3
@@ -41,6 +41,9 @@ class Menu
     public
     def drawMenu
         draw
+    end
+    def drawX
+
     end
 end
 end
