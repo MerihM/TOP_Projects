@@ -19,11 +19,11 @@ class DrawGrid
                 print @@UP_LINE
         end
         def verticalSymbol(sym)
-                1.times {print @@space_times_n}
+                print @@space_times_n
                 print sym
-                1.times {print @@space_times_n}
+                print @@space_times_n
         end
-        def verticalWithSymbol(pos = 0, sym = 'X')
+        def verticalWithSymbol(pos = 0, sym = " ")
             case pos
             when 0
                 verticalSymbol(sym)
@@ -39,16 +39,26 @@ class DrawGrid
             end
             puts ""
         end
-        def vertical_horizontal
-            verticalWithSymbol
+        def vertical_horizontal(pos = 0, sym = ' ')
+            verticalWithSymbol(pos, sym)
             horizontal
         end
-        def draw 
+        def draw(posX = 0, posY = 0, sym = 'X') 
             puts `clear`
-            for i in 1..2
+            case posX
+            when 0
+                vertical_horizontal(posY, sym)
+                for i in 1..2
+                    vertical_horizontal
+                end
+            when 1
                 vertical_horizontal
+                vertical_horizontal(posY, sym)
+                vertical_horizontal
+            when 2
+                2.times{vertical_horizontal}
+                vertical_horizontal(posY, sym)
             end
-           verticalWithSymbol
         end
         public
         def drawGrid
