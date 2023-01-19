@@ -1,51 +1,62 @@
-
-class Menu
+class DrawGrid
     class << self
-    private
-    $line = '-'
-    $up_line = '|'
-    def horizontal
-        for i in 1..29
-            if i%10 == 0
-                print '+'
-            else
-                print $line
+        private
+        @@LINE = '-'
+        @@UP_LINE = '|'
+        @@space_times_n = "\s"
+        def horizontal
+            for i in 1..11
+                if i%4 == 0
+                    print '+'
+                else
+                    print @@LINE
+                end
             end
+            puts ' '
         end
-        puts ' '
-    end
-    def vertical
-        for i in 1..2
-            for j in 1..9
-                print " "
+        def verticalFull
+                3.times {print @@space_times_n}
+                print @@UP_LINE
+        end
+        def verticalSymbol(sym)
+                1.times {print @@space_times_n}
+                print sym
+                1.times {print @@space_times_n}
+        end
+        def verticalWithSymbol(pos = 0, sym = 'X')
+            case pos
+            when 0
+                verticalSymbol(sym)
+                print @@UP_LINE
+                verticalFull
+            when 1
+                verticalFull
+                verticalSymbol(sym)
+                print @@UP_LINE
+            when 2
+                2.times{verticalFull}
+                verticalSymbol(sym)
             end
-            print $up_line
+            puts ""
         end
-        puts ""
-    end
-    def vertical_horizontal
-        for i in 1..3
-            vertical
+        def vertical_horizontal
+            verticalWithSymbol
+            horizontal
         end
-        horizontal
-    end
-    def draw 
-        puts `clear`
-        for i in 1..2
-            vertical_horizontal
+        def draw 
+            puts `clear`
+            for i in 1..2
+                vertical_horizontal
+            end
+           verticalWithSymbol
         end
-        for i in 1..3
-            vertical
+        public
+        def drawGrid
+            draw
         end
-    end
-    public
-    def drawMenu
-        draw
-    end
-    def drawX
-
     end
 end
-end
 
-Menu.drawMenu
+DrawGrid.drawGrid
+
+# Menu.verticalTry
