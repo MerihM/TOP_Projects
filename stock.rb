@@ -8,7 +8,7 @@ def populate_array(arr)
     arr.each_with_index do
         |value, index|
         for i in index+1...arr.length
-            array_of_values[aov_index].push(value - arr[i]).push(index).push(i)
+            array_of_values[aov_index].push(arr[i] - value).push(index).push(i)
             aov_index += 1
         end
     end
