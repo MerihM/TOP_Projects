@@ -1,5 +1,4 @@
 def bubble_sort(arr)
-    p  arr
     for i in 0...arr.length-1
         for j in 0..arr.length-2
             arr[j], arr[j+1] = arr[j + 1], arr[j] if arr[j] > arr[j+1]
