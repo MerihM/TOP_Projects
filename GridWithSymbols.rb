@@ -40,11 +40,11 @@ module Grid
         def modifyArray(posX, posY, sym)
             @@arr_of_symbols[posX][posY] = sym
         end
+        public
         def tttGrid
             puts `clear`
             drawGrid
         end
-        public
         def ttt(x, y, sym)
             modifyArray(x, y, sym)
             tttGrid
