@@ -120,19 +120,23 @@ module TicTacToe
             end
             return
         end
-        def testMethod
-            p "Is there a winner? #{@@win}"
+        def simpleMenu
+            exit = false
+            until exit
+                choiceGame = ''
+                n_game = false
+                playTillWin
+                until n_game 
+                    p 'Play new game? y/n'
+                    choiceGame = gets.chomp.downcase
+                    n_game = true if choiceGame == 'n' || choiceGame == 'y'
+                end
+                case choiceGame 
+                    when 'n' then exit = true
+                    when 'y' then playTillWin
+                end
+            end
         end
     end
 end
-
-# TicTacToe.newGame
-# 9.times{TicTacToe.playOneRound}
-# TicTacToe.testMethod
-# gets 
-# TicTacToe.newGame
-# TicTacToe.testMethod
-# gets
-# puts `clear`
-TicTacToe.playTillWin
-TicTacToe.testMethod
+TicTacToe.simpleMenu
