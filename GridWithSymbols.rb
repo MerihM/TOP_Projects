@@ -2,8 +2,13 @@ module Grid
     class << self
         private
         @@arr_of_symbols = Array.new(3) {Array.new()}
+        @@clean_arr = Array.new(3){Array.new()}
         @@UP_LINE = '|'
         @@LINE = '-'
+        for i in 0..2
+            3.times{@@arr_of_symbols[i].push(" ")}
+            3.times{@@clean_arr[i].push(" ")}
+        end
         def newSymbol(sym, pos)
             @@arr_of_symbols[pos-1] = sym
         end
@@ -12,9 +17,12 @@ module Grid
             print sym
             print " "
         end
-        def verticalDraw(sym = "X")
-            2.times{verticalSymbol(sym); print @@UP_LINE}
-            verticalSymbol(sym)
+        def verticalDraw(arr)
+            verticalSymbol(arr[0])
+            print @@UP_LINE
+            verticalSymbol(arr[1])
+            print @@UP_LINE
+            verticalSymbol(arr[2])
             puts ""
         end
         def horizontalDraw
@@ -23,19 +31,35 @@ module Grid
             puts ""
         end
         def drawGrid
-            2.times{verticalDraw; horizontalDraw;}
-            verticalDraw
+            verticalDraw(@@arr_of_symbols[0])
+            horizontalDraw
+            verticalDraw(@@arr_of_symbols[1])
+            horizontalDraw
+            verticalDraw(@@arr_of_symbols[2])
+        end
+        def modifyArray(posX, posY, sym)
+            @@arr_of_symbols[posX][posY] = sym
         end
         public
         def tttGrid
             puts `clear`
             drawGrid
         end
-        def testMethod
+        def ttt(x, y, sym)
+            modifyArray(x, y, sym)
             p @@arr_of_symbols
+        end
+        def clearGrid
+            @@arr_of_symbols = @@clean_arr
+            tttGrid
         end
     end
 end
 
-# Grid.tttGrid
-Grid.testMethod
+Grid.ttt(1, 2, 'X')
+Grid.tttGrid
+Grid.ttt(2, 2, '0')
+Grid.tttGrid
+Grid.ttt(2, 1, 'X')
+Grid.tttGrid
+Grid.clearGrid
