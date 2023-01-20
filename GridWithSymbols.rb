@@ -2,12 +2,12 @@ module Grid
     class << self
         private
         @@arr_of_symbols = Array.new(3) {Array.new()}
-        @@clean_arr = Array.new(3){Array.new()}
+        @@CLEAN_ARR = Array.new(3){Array.new()}
         @@UP_LINE = '|'
         @@LINE = '-'
         for i in 0..2
             3.times{@@arr_of_symbols[i].push(" ")}
-            3.times{@@clean_arr[i].push(" ")}
+            3.times{@@CLEAN_ARR[i].push(" ")}
         end
         def newSymbol(sym, pos)
             @@arr_of_symbols[pos-1] = sym
@@ -40,26 +40,18 @@ module Grid
         def modifyArray(posX, posY, sym)
             @@arr_of_symbols[posX][posY] = sym
         end
-        public
         def tttGrid
             puts `clear`
             drawGrid
         end
+        public
         def ttt(x, y, sym)
             modifyArray(x, y, sym)
-            p @@arr_of_symbols
+            tttGrid
         end
         def clearGrid
-            @@arr_of_symbols = @@clean_arr
+            @@arr_of_symbols = @@CLEAN_ARR
             tttGrid
         end
     end
 end
-
-Grid.ttt(1, 2, 'X')
-Grid.tttGrid
-Grid.ttt(2, 2, '0')
-Grid.tttGrid
-Grid.ttt(2, 1, 'X')
-Grid.tttGrid
-Grid.clearGrid
