@@ -1,17 +1,9 @@
-class Grid 
+module Grid 
     class << self
         private
-        @@class_var = 'Test me'
-        @@arr_of_symbols = Array.new()
+        @@arr_of_symbols = Array.new(3) {Array.new()}
         @@UP_LINE = '|'
         @@LINE = '-'
-        attr_reader :name
-        attr_reader :surname
-        def initialize (someName, someSurname)
-            @name = someName
-            @surname = someSurname
-        end
-        9.times{@@arr_of_symbols.push(' ')}
         def newSymbol(sym, pos)
             @@arr_of_symbols[pos-1] = sym
         end
@@ -35,11 +27,15 @@ class Grid
             verticalDraw
         end
         public
-        def testMethod
+        def tttGrid
             puts `clear`
             drawGrid
+        end
+        def testMethod
+            p @@arr_of_symbols
         end
     end
 end
 
+# Grid.tttGrid
 Grid.testMethod
