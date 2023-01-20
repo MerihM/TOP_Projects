@@ -4,7 +4,9 @@ module TicTacToe
     class << self
         private
             @@pos = 0
-            @@array_symbols = Array.new(3) {Array.new()}
+            @@array_player_choicesX = Array.new(3) {Array.new()}
+            @@array_player_choicesY = Array.new(3) {Array.new()}
+            @@array_player_choices_diag = Array.new(3)
             @@array_of_valid_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             @@posX = 0
             @@posY = 0
@@ -64,6 +66,9 @@ module TicTacToe
                     @@pos = gets.chomp
                 end
                 checkIfExists
+                @@array_player_choicesX[@@posX][@@posY] = @@symbol
+                @@array_player_choicesY[@@posY][@@posX] = @@symbol
+                @@array_player_choices_diag[@@posX] = @@symbol if @@posX == @@posY
             end
         public
         def newGame
@@ -77,8 +82,14 @@ module TicTacToe
             selectPosition
             Grid.ttt(@@posX, @@posY, @@symbol)
         end
+        def testMethod
+            p @@array_player_choicesX
+            p @@array_player_choicesY
+            p @@array_player_choices_diag
+        end
     end
 end
 
 # TicTacToe.newGame
 9.times{TicTacToe.playOneRound}
+TicTacToe.testMethod
