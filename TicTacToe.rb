@@ -16,11 +16,19 @@ module TicTacToe
             @@round = 0
             @@win = false
             def checkWinAll(arr)
-                sy = arr[0]
+                sy = arr[0] 
+                if sy == nil || arr.length < 3
+                    return
+                end
                 @@win = true if arr.all?{|sym| sym == sy}
             end
             def checkWinXY(arr_to_check)
                 arr_to_check.each {|arr| checkWinAll(arr)}
+            end
+            def checkWin
+                checkWinXY(@@array_player_choicesX)
+                checkWinXY(@@array_player_choicesY)
+                checkWinAll(@@array_player_choices_diag)
             end
             def checkIfExists
                 @@array_of_valid_positions.each_with_index do
@@ -80,6 +88,15 @@ module TicTacToe
                 @@array_player_choices_diag[@@posX] = @@symbol if @@posX == @@posY
                 @@round += 1
             end
+            def playOneRound
+                changePlayer
+                selectPosition
+                Grid.ttt(@@posX, @@posY, @@symbol)
+                checkWin if @@round >= 5
+                if @@win
+                    p "Player with #{@@symbol} wins"
+                end
+            end
         public
         def newGame
             @@pos = 0
@@ -95,17 +112,16 @@ module TicTacToe
             @@round = 0
             @@win = false
             Grid.clearGrid
+            playTillWin
         end
-        def playOneRound
-            changePlayer
-            selectPosition
-            Grid.ttt(@@posX, @@posY, @@symbol)
+        def playTillWin
+            until @@win
+                playOneRound
+            end
+            return
         end
         def testMethod
-            checkWinXY(@@array_player_choicesX)
-            checkWinXY(@@array_player_choicesY)
-            checkWinAll(@@array_player_choices_diag)
-            p "Do we have a winner? #{@@win}"
+            p "Is there a winner? #{@@win}"
         end
     end
 end
@@ -118,5 +134,5 @@ end
 # TicTacToe.testMethod
 # gets
 # puts `clear`
-9.times{TicTacToe.playOneRound}
+TicTacToe.playTillWin
 TicTacToe.testMethod
