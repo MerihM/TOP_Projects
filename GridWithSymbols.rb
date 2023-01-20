@@ -25,9 +25,19 @@ class Grid
             verticalSymbol(sym)
             puts ""
         end
+        def horizontalDraw
+            2.times { 3.times{print @@LINE}; print '+'}
+            3.times{print @@LINE}
+            puts ""
+        end
+        def drawGrid
+            2.times{verticalDraw; horizontalDraw;}
+            verticalDraw
+        end
         public
         def testMethod
-            verticalDraw
+            puts `clear`
+            drawGrid
         end
     end
 end
