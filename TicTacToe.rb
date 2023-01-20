@@ -35,14 +35,7 @@ module TicTacToe
             end
             p "Position x #{@@posX}, Position y #{@@posY}"
         end
-        def selectPosition
-            @@exists = false
-            puts 'Select position'
-            @@pos = gets.chomp
-            until @@pos.to_i.between?(1, 9)
-                puts "Select again:\n"
-                @@pos = gets.chomp
-            end
+        def checkIfExists
             @@array_of_valid_positions.each_with_index do
                 |val, ind|
                 if val == @@pos.to_i
@@ -56,5 +49,16 @@ module TicTacToe
                 selectPosition
             end
         end
+        def selectPosition
+            @@exists = false
+            puts 'Select position'
+            @@pos = gets.chomp
+            until @@pos.to_i.between?(1, 9)
+                puts "Select again:\n"
+                @@pos = gets.chomp
+            end
+            checkIfExists
+        end
     end
 end
+
