@@ -55,6 +55,16 @@ module TicTacToe
                     @@playerOne = true
                 end
             end
+            def selectPosition
+                @@exists = false
+                puts 'Select position'
+                @@pos = gets.chomp
+                until @@pos.to_i.between?(1, 9)
+                    puts "Select again:\n"
+                    @@pos = gets.chomp
+                end
+                checkIfExists
+            end
         public
         def newGame
             for i in 1..9 
@@ -67,23 +77,8 @@ module TicTacToe
             selectPosition
             Grid.ttt(@@posX, @@posY, @@symbol)
         end
-        def selectPosition
-            @@exists = false
-            puts 'Select position'
-            @@pos = gets.chomp
-            until @@pos.to_i.between?(1, 9)
-                puts "Select again:\n"
-                @@pos = gets.chomp
-            end
-            checkIfExists
-        end
     end
 end
 
-# TicTacToe.selectPosition
-# TicTacToe.selectPosition
-# TicTacToe.selectPosition
 # TicTacToe.newGame
 9.times{TicTacToe.playOneRound}
-# TicTacToe.newGame
-# 9.times {TicTacToe.playOneRound}
