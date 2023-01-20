@@ -13,6 +13,15 @@ module TicTacToe
             @@exists = false
             @@playerOne = true
             @@symbol = ''
+            @@round = 0
+            @@win = false
+            def checkWinAll(arr)
+                sy = arr[0]
+                @@win = true if arr.all?{|sym| sym == sy}
+            end
+            def checkWinXY(arr_to_check)
+                arr_to_check.each {|arr| checkWinAll(arr)}
+            end
             def checkIfExists
                 @@array_of_valid_positions.each_with_index do
                     |val, ind|
@@ -69,12 +78,22 @@ module TicTacToe
                 @@array_player_choicesX[@@posX][@@posY] = @@symbol
                 @@array_player_choicesY[@@posY][@@posX] = @@symbol
                 @@array_player_choices_diag[@@posX] = @@symbol if @@posX == @@posY
+                @@round += 1
             end
         public
         def newGame
-            for i in 1..9 
-                @@array_of_valid_positions[i] = i
-            end
+            @@pos = 0
+            @@array_player_choicesX = Array.new(3) {Array.new()}
+            @@array_player_choicesY = Array.new(3) {Array.new()}
+            @@array_player_choices_diag = Array.new(3)
+            @@array_of_valid_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+            @@posX = 0
+            @@posY = 0
+            @@exists = false
+            @@playerOne = true
+            @@symbol = ''
+            @@round = 0
+            @@win = false
             Grid.clearGrid
         end
         def playOneRound
@@ -83,13 +102,21 @@ module TicTacToe
             Grid.ttt(@@posX, @@posY, @@symbol)
         end
         def testMethod
-            p @@array_player_choicesX
-            p @@array_player_choicesY
-            p @@array_player_choices_diag
+            checkWinXY(@@array_player_choicesX)
+            checkWinXY(@@array_player_choicesY)
+            checkWinAll(@@array_player_choices_diag)
+            p "Do we have a winner? #{@@win}"
         end
     end
 end
 
 # TicTacToe.newGame
+# 9.times{TicTacToe.playOneRound}
+# TicTacToe.testMethod
+# gets 
+# TicTacToe.newGame
+# TicTacToe.testMethod
+# gets
+# puts `clear`
 9.times{TicTacToe.playOneRound}
 TicTacToe.testMethod
