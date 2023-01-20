@@ -8,6 +8,7 @@ module TicTacToe
             @@array_of_valid_positions = [1, 2, 3, 4, 5, 6, 7, 8, 9]
             @@posX = 0
             @@posY = 0
+            @@exists = false
         public
         def newGame
             Grid.clearGrid
@@ -35,6 +36,7 @@ module TicTacToe
             p "Position x #{@@posX}, Position y #{@@posY}"
         end
         def selectPosition
+            @@exists = false
             puts 'Select position'
             @@pos = gets.chomp
             until @@pos.to_i.between?(1, 9)
@@ -46,10 +48,13 @@ module TicTacToe
                 if val == @@pos.to_i
                     @@array_of_valid_positions[ind] = 0
                     positionAssignment(@@pos)
+                    @@exists = true
                 end
+            end
+            if !@@exists
+                p 'There is already something in that position'
+                selectPosition
             end
         end
     end
 end
-
-TicTacToe.selectPosition
