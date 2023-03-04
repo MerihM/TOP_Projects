@@ -4,5 +4,5 @@ contents = CSV.open('event_attendees.csv', headers: true, header_converters: :sy
 
 contents.each do |line|
     number = line[:homephone]
-    p number
+    cleaner_number = number.gsub(/[^0-9]/, '')
 end
