@@ -1,4 +1,5 @@
 require 'csv'
+require 'erb'
 
 def number_cleanup (num)
     if (num.length >= 11 && num[0] != '1') || num.length < 10
@@ -14,14 +15,14 @@ end
 
 def write_to_file(arr, fn)
     arr.sort!
-    arr.each do
-        |mem|
-        File.open(fn, 'a'){|f| f.puts mem}
-    end
+    filename = 'phonebook.html'
+    File.open(filename, 'w') {|f| f.puts fn}
 end
 
-contents = CSV.open('event_attendees_full.csv', headers: true, header_converters: :symbol)
+contents = CSV.open('event_attendees.csv', headers: true, header_converters: :symbol)
 filename = 'phonebook.txt'
+template_phonebook = File.read('phonebook.erb')
+erb_template = ERB.new template_phonebook
 clear_phonebook(filename)
 arr = []
 contents.each do |line|
@@ -32,4 +33,5 @@ contents.each do |line|
         arr.push(fullname.ljust(30) + ' : ' + number)
     end
 end
-write_to_file(arr, filename)
+phonebook = erb_template.result(binding)
+write_to_file(arr, phonebook)
