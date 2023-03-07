@@ -5,7 +5,7 @@ class Hangman
     @user_input
     @input_array
     @word_array
-    @no_letters 
+    @no_letters
 
     def set_word
         @word = get_random_word
@@ -19,38 +19,30 @@ class Hangman
     end
 
     def check_value_vars
-        puts "Word : #{@word}"
-        puts "User input : #{@user_input}"
-        puts "Number of letters : #{@input_array.join}"
-        puts "Word array : #{@word_array.join}"
-        puts "Number of guesses : #{@number_of_guesses}"
-        puts "Array of no letters : #{@no_letters.join(', ')}"
+        puts '############################################################################'
+        puts "\tWord : #{@word}"
+        puts "\tUser input : #{@user_input}"
+        puts "\tNumber of letters : #{@input_array.join}"
+        puts "\tWord array : #{@word_array.join}"
+        puts "\tNumber of guesses : #{@number_of_guesses}"
+        puts "\tArray of no letters : #{@no_letters.join(', ')}"
+        puts '############################################################################'
     end
 
     def play_game
-        until out_of_guesses?
+        loop do
             check_input
-            break if win?(@user_input, @input_array)
+            check_value_vars
+            if win?
+                break
+            end
         end
     end
-    private 
+    private
 
-    def win?(input, array)
-        temp = array.join
-        compare_words?(input) || compare_words?(temp)
-    end
-    
-    def out_of_guesses?
-        @number_of_guesses == 0
-    end
-
-    def  compare_words?(to_compare)
-        to_compare == @word
-    end
-
-    def  word_length_condition? (word)
-        word.length >= 5 && word.length <= 12
-    end
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ON LOAD \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     def  load_words
         content = File.open('google_10000_english.txt')
@@ -66,58 +58,121 @@ class Hangman
         load_words[rand(0..load_words.length)]
     end
 
-    def  get_user_input
-        puts 'Enter some word'
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ INPUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    def user_input_helper
+        puts 'Enter word or letter'
         word = gets.chomp.downcase
-        while (word.length < 4 && word.length > 1) do
+        save_game if word == 'save'
+        word
+    end
+
+    def  get_user_input
+        word = user_input_helper
+        while (word.length < 5 && word.length > 1 && word != 'save') do
             puts 'ERROR!!! Please repeat input'
-            word = gets.chomp.downcase
+            word = user_input_helper
         end
         word
     end
 
-    def one_letter_check (letter)
-        if @word_array.include?(letter) 
-            @word_array.each_with_index do
-                |l, index|
-                @input_array[index] = letter if l == letter
-            end
-        else 
-            if @no_letters.include?(letter)
-                @number_of_guesses -= 1
-            else
-                @no_letters.push(letter)
-                @number_of_guesses -= 1        
-            end
-        end
-        
-
-    end
     def save_game
         p 'testSave'
     end
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ WIN CONDITION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+    def win?
+        out_of_guesses? || compare_words?
+    end
+
+    def out_of_guesses?
+        @number_of_guesses <= 0
+    end
+
+    def  compare_words?(to_compare = @input_array.join)
+        p "Word : #{@word}"
+        p "Compare : #{to_compare}"
+        if to_compare == @word
+            true
+        else
+            @number_of_guesses -= 1
+            false
+        end
+    end
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ INPUT CHECKS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
     def check_input
 
         @user_input = get_user_input
-        if @user_input == 'save'
-            save_game 
-            return
-        end
+
         length_of_input = @user_input.length
 
         case length_of_input
 
-        when 1 then one_letter_check (@user_input)
-                        
-        else compare_words?(@user_input)
-            
+            when 1 then one_letter_check (@user_input)
+
+            else compare_words?(@user_input)
+
         end
     end
+
+    def one_letter_check (letter)
+        if @word_array.include?(letter)
+            @word_array.each_with_index do
+                |l, index|
+                @input_array[index] = letter if l == letter
+            end
+        else
+            if @no_letters.include?(letter)
+                @number_of_guesses -= 1
+            else
+                @no_letters.push(letter)
+                @number_of_guesses -= 1
+            end
+        end
+    end
+
+    def  word_length_condition? (word)
+        word.length >= 5 && word.length <= 12
+    end
+
+
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
 end
 
 h = Hangman.new
 h.set_word
-p h.word
 
 h.play_game
 h.check_value_vars
