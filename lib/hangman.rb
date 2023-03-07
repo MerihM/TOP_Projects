@@ -30,9 +30,7 @@ class Hangman
     private 
 
     def  compare_words?
-        p @user_input
-        p @word
-        p @user_input == @word
+        @user_input == @word
     end
 
     def  word_length_condition? (word)
@@ -80,13 +78,16 @@ class Hangman
     def check_input
 
         @user_input = get_user_input
+        if @user_input == 'save'
+            save_game 
+            return
+        end
+        p 'No save'
         length_of_input = @user_input.length
 
         case length_of_input
         when 1 then one_letter_check (@user_input)
-            
-        when 4 then save_game
-            
+                        
         else compare_words?
             
         end
