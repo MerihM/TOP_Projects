@@ -56,6 +56,11 @@ class Hangman
     def  get_user_input
         puts 'Enter some word'
         word = gets.chomp.downcase
+        while (word.length < 4 && word.length > 1) do
+            puts 'ERROR!!! Please repeat input'
+            word = gets.chomp.downcase
+        end
+        word
     end
 
     def one_letter_check (letter)
