@@ -1,8 +1,10 @@
 class Hangman
     attr_reader :word
     @word
+    @number_of_guesses
     @user_input
     @input_array
+    @word_array
 
     def set_word
         @word = get_random_word
@@ -10,13 +12,18 @@ class Hangman
         @word.length.times do
             @input_array.push('_ ')
         end
+        @word_array = @word.split('')
+        @number_of_guesses = 10
     end
 
     def check_value_vars
         p "Word : #{@word}"
         p "User input : #{@user_input}"
         p "Number of letters : #{@input_array}"
+        p "Word array : #{@word_array}"
+        p "Number of guesses : #{@number_of_guesses}"
     end
+
     def play_round
         check_input
     end
@@ -51,10 +58,17 @@ class Hangman
         word = gets.chomp.downcase
     end
 
-    def one_letter_check
-        p 'test'
-    end
+    def one_letter_check (letter)
+        if @word_array.include?(letter) 
+            @word_array.each_with_index do
+                |l, index|
+                @input_array[index] = letter if l == letter
+            end
+        else 
+            @number_of_guesses -= 1
+        end
 
+    end
     def save_game
         p 'testSave'
     end
@@ -64,7 +78,7 @@ class Hangman
         length_of_input = @user_input.length
 
         case length_of_input
-        when 1 then one_letter_check
+        when 1 then one_letter_check (@user_input)
             
         when 4 then save_game
             
