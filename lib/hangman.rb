@@ -1,10 +1,11 @@
 class Hangman
-    attr_reader :word
+
     @word
     @number_of_guesses
     @user_input
     @input_array
     @word_array
+    @no_letters 
 
     def set_word
         @word = get_random_word
@@ -14,20 +15,28 @@ class Hangman
         end
         @word_array = @word.split('')
         @number_of_guesses = 10
+        @no_letters = []
     end
 
     def check_value_vars
-        p "Word : #{@word}"
-        p "User input : #{@user_input}"
-        p "Number of letters : #{@input_array}"
-        p "Word array : #{@word_array}"
-        p "Number of guesses : #{@number_of_guesses}"
+        puts "Word : #{@word}"
+        puts "User input : #{@user_input}"
+        puts "Number of letters : #{@input_array.join}"
+        puts "Word array : #{@word_array.join}"
+        puts "Number of guesses : #{@number_of_guesses}"
+        puts "Array of no letters : #{@no_letters.join(', ')}"
     end
 
-    def play_round
-        check_input
+    def play_game
+        until out_of_guesses?
+            check_input
+        end
     end
     private 
+
+    def out_of_guesses?
+        @number_of_guesses == 0
+    end
 
     def  compare_words?
         @user_input == @word
@@ -68,8 +77,14 @@ class Hangman
                 @input_array[index] = letter if l == letter
             end
         else 
-            @number_of_guesses -= 1
+            if @no_letters.include?(letter)
+                @number_of_guesses -= 1
+            else
+                @no_letters.push(letter)
+                @number_of_guesses -= 1        
+            end
         end
+        
 
     end
     def save_game
@@ -82,10 +97,10 @@ class Hangman
             save_game 
             return
         end
-        p 'No save'
         length_of_input = @user_input.length
 
         case length_of_input
+
         when 1 then one_letter_check (@user_input)
                         
         else compare_words?
@@ -97,7 +112,6 @@ end
 h = Hangman.new
 h.set_word
 
-p h.word
-h.play_round
+h.play_game
 h.check_value_vars
 
