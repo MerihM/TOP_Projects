@@ -12,10 +12,17 @@ def load_words
     arr_of_words
 end
 
+def get_random_word
+    load_words[rand(0..load_words.length)]
+end
+
 def get_user_input
     puts 'Enter some word'
     word = gets.chomp.downcase
-    word
 end
 
+def compare_words?
+    get_user_input == get_random_word
+end
 
+p "Your guess is #{compare_words?}"
