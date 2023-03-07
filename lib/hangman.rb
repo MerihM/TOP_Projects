@@ -1,5 +1,5 @@
 class Hangman
-
+    attr_reader :word
     @word
     @number_of_guesses
     @user_input
@@ -30,16 +30,22 @@ class Hangman
     def play_game
         until out_of_guesses?
             check_input
+            break if win?(@user_input, @input_array)
         end
     end
     private 
 
+    def win?(input, array)
+        temp = array.join
+        compare_words?(input) || compare_words?(temp)
+    end
+    
     def out_of_guesses?
         @number_of_guesses == 0
     end
 
-    def  compare_words?
-        @user_input == @word
+    def  compare_words?(to_compare)
+        to_compare == @word
     end
 
     def  word_length_condition? (word)
@@ -103,7 +109,7 @@ class Hangman
 
         when 1 then one_letter_check (@user_input)
                         
-        else compare_words?
+        else compare_words?(@user_input)
             
         end
     end
@@ -111,6 +117,7 @@ end
 
 h = Hangman.new
 h.set_word
+p h.word
 
 h.play_game
 h.check_value_vars
