@@ -1,4 +1,5 @@
 require_relative 'hangman'
+require "yaml"
 
 def user_input_helper
 
@@ -21,9 +22,13 @@ def get_user_input
     
 end
       
-def save_game
+def save_game(game)
     
-    @number_of_guesses += 1
     Dir.mkdir('save_games') unless Dir.exists?('save_games')
+    puts 'Enter the name of the save'
+    save_name = gets.chomp
+    File.open("save_games/#{save_name}.yml", "w") do |f|
+        f.write YAML.dump(game)
+    end
     
 end
