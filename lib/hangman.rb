@@ -1,3 +1,5 @@
+require "yaml"
+
 class Hangman
     attr_accessor :word
     @word
@@ -9,7 +11,7 @@ class Hangman
     @win
     @word_switch
 
-    def set_values
+    def initialize
         @word = get_random_word
         @input_array = []
         @word.length.times do
@@ -122,5 +124,62 @@ class Hangman
 
 end
 
+
+# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ END OF CLASS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+
+
+def user_input_helper (game)
+
+    puts 'Enter word or letter'
+    word = gets.chomp.downcase
+    save_game(game) if word == 'save'
+    word
+    
+end
+        
+def get_user_input (game)
+    
+    word = user_input_helper(game)
+    while (word.length < 5 && word.length > 1 && word != 'save') do
+        puts `clear`
+        puts 'ERROR!!! Please repeat input'
+        word = user_input_helper(game)
+    end
+    word
+    
+end
+      
+def save_game(game)
+    
+    dir_name = 'save_games'
+    Dir.mkdir(dir_name) unless Dir.exists?(dir_name)
+    no_of_saves = Dir.glob("#{dir_name}/*.{yml}").length
+    puts 'Enter the name of the save'
+    save_name = gets.chomp
+    File.open("#{dir_name}/#{no_of_saves + 1}. #{save_name}.yml", "w") do |f|
+        f.write YAML.dump(game)
+    end
+    
+end
+
+def load_game
+    dir_name = 'save_games/'
+    arr = Dir.glob("#{dir_name}*.{yml}")
+    arr = arr.each {|m| m.slice!(dir_name)}
+    puts arr
+    puts "Select save game by entering number next to it"
+    select = gets.chomp
+    while select.to_i == 0 || select.to_i > arr.length
+        puts `clear`
+        puts "ERROR! Please repeat selection"
+        puts arr
+        select = gets.chomp
+    end
+    puts arr[select.to_i-1]
+    file = File.open("#{dir_name}#{arr[select.to_i-1]}", "r")
+end
+
+
+h = YAML.load(load_game)
 
 
