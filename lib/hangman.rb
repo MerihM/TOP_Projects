@@ -1,5 +1,5 @@
 class Hangman
-    attr_reader :word
+    attr_accessor :word
     @word
     @number_of_guesses
     @user_input
@@ -57,29 +57,6 @@ class Hangman
         load_words[rand(0..load_words.length)]
     end
 
-# \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ INPUT \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-    def user_input_helper
-        puts 'Enter word or letter'
-        word = gets.chomp.downcase
-        save_game if word == 'save'
-        word
-    end
-
-    def  get_user_input
-        word = user_input_helper
-        while (word.length < 5 && word.length > 1 && word != 'save') do
-            puts `clear`
-            puts 'ERROR!!! Please repeat input'
-            word = user_input_helper
-        end
-        word
-    end
-
-    def save_game
-        @number_of_guesses += 1
-        p 'testSave'
-    end
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ WIN CONDITION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -145,8 +122,5 @@ class Hangman
 
 end
 
-h = Hangman.new
-h.set_values
 
-h.play_game
 
