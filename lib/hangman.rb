@@ -6,6 +6,8 @@ class Hangman
     @input_array
     @word_array
     @no_letters
+    @win
+    @word_switch
 
     def set_word
         @word = get_random_word
@@ -16,6 +18,8 @@ class Hangman
         @word_array = @word.split('')
         @number_of_guesses = 10
         @no_letters = []
+        @win = false
+        @word_switch = false
     end
 
     def check_value_vars
@@ -31,8 +35,8 @@ class Hangman
 
     def play_game
         loop do
-            check_input
             check_value_vars
+            check_input
             if win?
                 break
             end
@@ -87,6 +91,7 @@ class Hangman
     end
 
     def save_game
+        @number_of_guesses += 1
         p 'testSave'
     end
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
@@ -99,21 +104,23 @@ class Hangman
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     def win?
-        out_of_guesses? || compare_words?
+        out_of_guesses? || @win
     end
 
     def out_of_guesses?
         @number_of_guesses <= 0
     end
 
-    def  compare_words?(to_compare = @input_array.join)
-        p "Word : #{@word}"
-        p "Compare : #{to_compare}"
-        if to_compare == @word
-            true
+    def  compare_words?(to_compare)
+
+        if @word_switch
+            if to_compare == @word
+                @win = true
+            else
+                @number_of_guesses -= 1
+            end
         else
-            @number_of_guesses -= 1
-            false
+            @win = true if to_compare == @word 
         end
     end
 
@@ -134,12 +141,13 @@ class Hangman
 
         length_of_input = @user_input.length
 
-        case length_of_input
 
-            when 1 then one_letter_check (@user_input)
-
-            else compare_words?(@user_input)
-
+        if length_of_input == 1 
+            @word_switch = false
+            one_letter_check(@user_input)
+        else
+            @word_switch = true
+            compare_words?(@user_input)
         end
     end
 
@@ -157,6 +165,7 @@ class Hangman
                 @number_of_guesses -= 1
             end
         end
+        compare_words?(@input_array.join)
     end
 
     def  word_length_condition? (word)
