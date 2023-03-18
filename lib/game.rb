@@ -4,7 +4,7 @@ require_relative "hangman"
 def save_game(game)
     dir_name = 'save_games'
     Dir.mkdir(dir_name) unless Dir.exists?(dir_name)
-    puts 'Enter the name of the save'
+    puts 'Enter the name of the save\n'
     save_name = gets.chomp
     File.open("#{dir_name}/#{save_name}.yaml", "w") do |f|
         f.write YAML.dump(game)
@@ -13,13 +13,13 @@ end
 
 def save_helper game
     puts `clear`
-    puts "Saving game..."
+    puts "Saving game...\n"
     save_game(game)
     puts `clear`
-    puts 'Game saved! Press any key to continue...'
+    puts 'Game saved! Press any key to continue...\n'
     gets
     puts `clear`
-    puts "Do you want to continue playing? (y/n)"
+    puts "Do you want to continue playing? (y/n)\n"
     continue = gets.chomp
     return continue
 end
@@ -27,7 +27,7 @@ end
 def choose_save 
     dir_name = 'save_games'
     unless Dir.exists?(dir_name) && Dir["#{dir_name}/*"].length != 0
-        puts "There are no saved games"
+        puts "There are no saved games\n"
         return 
     end
     filenames = Dir.glob("#{dir_name}/*").map { |file| file[(file.index('/') + 1)...(file.index('.'))] }
@@ -72,6 +72,9 @@ def play_game
             return if continue == 'n'
         end
     end
+    puts `clear`
+    puts game.win ? "\tYou win!!!\n\tWord was #{game.word}" : "\tBetter luck next time!!!\s\tWord was #{game.word}\n"
+    puts
 end
 
 play_game
