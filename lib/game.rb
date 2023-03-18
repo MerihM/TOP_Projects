@@ -21,14 +21,22 @@ def save_helper game
     puts `clear`
 end
 
-
-h1 = Hangman.new
-until h1.over?
-    if h1.check_input == 'save'
-        save_helper(h1)
-        puts "Do you want to continue playing? (y/n)"
-        continue = gets.chomp
-        return if continue.downcase == 'n' || continue.downcase == 'no'
-        puts `clear`
+def load_game 
+    dir_name = 'save_games'
+    unless Dir.exists?(dir_name) || Dir["#{dir_name}/*"].length != 0
+        puts "There are no saved games"
+        return 
     end
 end
+
+load_game
+# h1 = Hangman.new
+# until h1.over?
+#     if h1.check_input == 'save'
+#         save_helper(h1)
+#         puts "Do you want to continue playing? (y/n)"
+#         continue = gets.chomp
+#         return if continue.downcase == 'n' || continue.downcase == 'no'
+#         puts `clear`
+#     end
+# end
