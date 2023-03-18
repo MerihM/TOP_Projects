@@ -21,7 +21,7 @@ def save_helper game
     puts `clear`
     puts "Do you want to continue playing? (y/n)"
     continue = gets.chomp
-    return if continue.downcase == 'n' || continue.downcase == 'no'
+    return continue
 end
 
 def choose_save 
@@ -35,11 +35,14 @@ def choose_save
     puts filenames
     begin
         fn = gets.chomp
-        raise "#{fn} doesn't exist" unless filenames.include?(fn)
+        raise "#{fn} doesn't exist\n" unless filenames.include?(fn)
         puts "Loading #{fn}...\n"
         "#{dir_name}/#{fn}.yaml"
     rescue StandardError => e
+        puts `clear`
         puts e
+        puts "Choose saved game\n"
+        puts filenames
         retry
     end
 end
@@ -50,9 +53,9 @@ def load_game
     saved = File.open(File.join(Dir.pwd, fn), 'r')
     loaded_game = YAML.unsafe_load(saved)
     saved.close
+    puts `clear`
     loaded_game
 end
-
 
 def play_game
     puts "\t\tGame of hangman\n\tChoose:\n\t1. New Game\n\t2.Load Game\n"
@@ -61,11 +64,12 @@ def play_game
         puts `clear`
         puts "\tERROR!!!\n\tPlease enter 1 or 2\n"
     end
+    puts `clear`
     game = choice == '1' ? Hangman.new : load_game
-
     until game.over?
         if game.check_input == 'save'
-            return if save_helper(game) == nil
+            continue = save_helper(game)
+            return if continue == 'n'
         end
     end
 end

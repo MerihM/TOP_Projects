@@ -1,5 +1,5 @@
 class Hangman
-    attr_accessor :word
+    attr_accessor :word, :win
     @word
     @number_of_guesses
     @input_array
@@ -18,14 +18,6 @@ class Hangman
         @win = false
         @word_switch = false
     end
-
-    def progress_tracking
-        puts "\tWord is #{@word}"
-        puts "\tWord : #{@input_array.join}\n\n"
-        puts "\tGuesses left : #{@number_of_guesses}\n\n"
-        puts "\tThere are no  : #{@no_letters.join(', ')} letters\n\n" if @no_letters.length > 0
-    end
-
 
     def over?
         progress_tracking
@@ -49,6 +41,12 @@ class Hangman
 
     private
 
+    def progress_tracking
+        puts `clear`
+        puts "\tWord : #{@input_array.join}\n\n"
+        puts "\tGuesses left : #{@number_of_guesses}\n\n"
+        puts "\tThere are no  : #{@no_letters.join(', ')} letters\n\n" if @no_letters.length > 0
+    end
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ON LOAD \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
     def  load_words
