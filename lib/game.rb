@@ -19,6 +19,9 @@ def save_helper game
     puts 'Game saved! Press any key to continue...'
     gets
     puts `clear`
+    puts "Do you want to continue playing? (y/n)"
+    continue = gets.chomp
+    return if continue.downcase == 'n' || continue.downcase == 'no'
 end
 
 def choose_save 
@@ -47,5 +50,24 @@ def load_game
     saved = File.open(File.join(Dir.pwd, fn), 'r')
     loaded_game = YAML.unsafe_load(saved)
     saved.close
-    puts loaded_game
+    loaded_game
 end
+
+
+def play_game
+    puts "\t\tGame of hangman\n\tChoose:\n\t1. New Game\n\t2.Load Game\n"
+    choice = gets.chomp
+    until['1', '2'].include?(choice)
+        puts `clear`
+        puts "\tERROR!!!\n\tPlease enter 1 or 2\n"
+    end
+    game = choice == '1' ? Hangman.new : load_game
+
+    until game.over?
+        if game.check_input == 'save'
+            return if save_helper(game) == nil
+        end
+    end
+end
+
+play_game
