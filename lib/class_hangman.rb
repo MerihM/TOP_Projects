@@ -2,7 +2,6 @@ class Hangman
     attr_accessor :word
     @word
     @number_of_guesses
-    @user_input
     @input_array
     @word_array
     @no_letters
@@ -20,24 +19,18 @@ class Hangman
         @word_switch = false
     end
 
-    def play_game
-        loop do
-            puts `clear`
-            progress_tracking
-            check_input
-            if win?
-                puts `clear`
-                break
-            end
-        end
+    def over?
+        check_input
+        out_of_guesses? || @win
     end
-    private
 
     def progress_tracking
         puts "\tWord : #{@input_array.join}\n\n"
         puts "\tGuesses left : #{@number_of_guesses}\n\n"
         puts "\tThere are no  : #{@no_letters.join(', ')} letters\n\n" if @no_letters.length > 0
     end
+
+    private
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ ON LOAD \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
@@ -57,10 +50,6 @@ class Hangman
 
 
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ WIN CONDITION \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-
-    def win?
-        out_of_guesses? || @win
-    end
 
     def out_of_guesses?
         @number_of_guesses <= 0
@@ -82,19 +71,31 @@ class Hangman
 # \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ INPUT CHECKS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 
 
+    def inputed
+        guess = ''
+        unless word_length?(guess.length)
+            puts `clear`
+            puts "\t\tEnter a letter, word, or type save to save progress:\n"
+            guess = gets.chomp
+            return 'save' if guess == 'save'
+        end
+        guess
+    end
+
+    def word_length? (word)
+        (word >= 5 && word <= 12) || (word == 1)
+    end
+
     def check_input
-
-        @user_input = get_user_input
-
-        length_of_input = @user_input.length
-
+        user_input = inputed
+        length_of_input = user_input.length
 
         if length_of_input == 1
             @word_switch = false
-            one_letter_check(@user_input)
+            one_letter_check(user_input)
         else
             @word_switch = true
-            compare_words?(@user_input)
+            compare_words?(user_input)
         end
     end
 
@@ -113,10 +114,6 @@ class Hangman
             end
         end
         compare_words?(@input_array.join)
-    end
-
-    def  word_length_condition? (word)
-        word.length >= 5 && word.length <= 12
     end
 
 end
