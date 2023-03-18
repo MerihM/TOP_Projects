@@ -21,3 +21,7 @@ def load_game
 
 end
 
+h1 = Hangman.new
+until h1.over?
+    p 'save game' if check_input == 'save'
+end

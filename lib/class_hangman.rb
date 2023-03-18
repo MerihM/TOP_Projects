@@ -19,15 +19,32 @@ class Hangman
         @word_switch = false
     end
 
-    def over?
-        check_input
-        out_of_guesses? || @win
-    end
-
     def progress_tracking
+        puts "\tWord is #{@word}"
         puts "\tWord : #{@input_array.join}\n\n"
         puts "\tGuesses left : #{@number_of_guesses}\n\n"
         puts "\tThere are no  : #{@no_letters.join(', ')} letters\n\n" if @no_letters.length > 0
+    end
+
+
+    def over?
+        progress_tracking
+        out_of_guesses? || @win
+    end
+
+    def check_input
+        user_input = inputed
+        length_of_input = user_input.length
+
+        if length_of_input == 1
+            @word_switch = false
+            one_letter_check(user_input)
+        elsif user_input == 'save'
+            return 'save'
+        else
+            @word_switch = true
+            compare_words?(user_input)
+        end
     end
 
     private
@@ -39,13 +56,16 @@ class Hangman
         arr_of_words = []
         while !content.eof?
             line = content.readline.strip
-            arr_of_words.push(line) if word_length_condition?(line)
+            arr_of_words.push(line) if word_length_condition?(line.length)
         end
         arr_of_words
     end
 
     def  get_random_word
         load_words[rand(0..load_words.length)]
+    end
+    def word_length_condition?(word)
+        word >= 5 && word <= 12
     end
 
 
@@ -72,10 +92,13 @@ class Hangman
 
 
     def inputed
-        guess = ''
-        unless word_length?(guess.length)
+        puts "Enter a letter, word, or type save to save progress:\n"
+        guess = gets.chomp
+        return 'save' if guess == 'save'
+        until word_length?(guess.length)
             puts `clear`
-            puts "\t\tEnter a letter, word, or type save to save progress:\n"
+            puts 'ERROR! Repeat input'    
+            puts "Enter a letter, word, or type save to save progress:\n"
             guess = gets.chomp
             return 'save' if guess == 'save'
         end
@@ -83,20 +106,7 @@ class Hangman
     end
 
     def word_length? (word)
-        (word >= 5 && word <= 12) || (word == 1)
-    end
-
-    def check_input
-        user_input = inputed
-        length_of_input = user_input.length
-
-        if length_of_input == 1
-            @word_switch = false
-            one_letter_check(user_input)
-        else
-            @word_switch = true
-            compare_words?(user_input)
-        end
+        word_length_condition?(word) || word == 1
     end
 
     def one_letter_check (letter)
