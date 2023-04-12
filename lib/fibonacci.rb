@@ -4,4 +4,11 @@ def fibs (num_of_arr_elements)
     fib_arr[0..-2]
 end
 
-p fibs 8
+def fibs_rec (num)
+    return [0] if num == 0
+    return [0, 1] if num == 1
+    arr = fibs_rec (num - 1)
+    arr << arr[-1] + arr[-2]
+end
+
+p fibs_rec(8)[0..-2]
