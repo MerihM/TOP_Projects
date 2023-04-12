@@ -10,5 +10,3 @@ def fibs_rec (num)
     arr = fibs_rec (num - 1)
     arr << arr[-1] + arr[-2]
 end
-
-p fibs_rec(8)[0..-2]
