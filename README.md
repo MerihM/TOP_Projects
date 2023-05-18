@@ -31,7 +31,7 @@ Method that takes *value* as an argument, and checks if Linked List contains *va
 returns false.
 
 ## `#find(value)`
-Method that takes *value* as an argument, and finds that *value* inside Linked List. If *value* doesn't exist in Linked List, error is returned.
+Method that takes *value* as an argument, and finds index of that *value* inside Linked List. If *value* doesn't exist, error is returned.
 
 ## `#to_s`
 Method that returns Linked List in string format, formatted as (value) -> (value) -> ... -> (value) -> nil
