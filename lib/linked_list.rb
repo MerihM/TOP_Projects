@@ -15,12 +15,25 @@ class LinkedList
         @head = nil
     end
 
+    def test_print
+       temp = @head
+       while temp != nil
+        p temp.value 
+        temp = temp.next_node
+       end
+    end
+
     def append(value)
         # Add element to the end of the Linked List
+        if @head == nil
+            @head = Node.new(value) 
+        else
+            tail.next_node = Node.new(value)
+        end
     end
 
     def prepend(value)
-        # Add element to the end of the Linked list
+        # Add element to the begining of the Linked list
     end
 
     def size
@@ -31,8 +44,10 @@ class LinkedList
         # Return first node
     end
 
-    def tail
+    def tail(temp = @head)
         # Return last node
+        return temp if temp.next_node == nil
+        tail(temp.next_node)
     end
 
     def at(index)
@@ -63,3 +78,13 @@ class LinkedList
         # Remove node from Linked List at index
     end
 end
+
+test = LinkedList.new
+
+test.append(1)
+test.append(7)
+test.append(2)
+test.append(3)
+test.append(4)
+
+test.test_print
