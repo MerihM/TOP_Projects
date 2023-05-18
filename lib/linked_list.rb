@@ -69,16 +69,26 @@ class LinkedList
         pop(node.next_node) 
     end
 
-    def contains?(value)
+    def contains?(value, condition = false, node = @head)
         # Check if Linked List contains value, if it does return true, else return false
+        value == node.value ? condition = true : node = node.next_node while node.next_node != nil && condition != true
+        condition
     end
 
-    def find(value)
+    def find(value, index = 0, node = @head)
         # Returns index at which node was found, if not found return nil
+        return "ERROR! Value #{value} is not contained in the list" if node == nil
+        value == node.value ? "Value #{value} is at index: #{index}" : find(value, index+1, node.next_node)
     end
 
-    def to_s
+    def to_s(node = @head)
         # Represent Linked List as string formated as (value) -> (value) -> ... (value) -> nil
+        string_list = ""
+        while node != nil 
+            string_list += "(#{node.value}) -> " 
+            node = node.next_node
+        end
+        string_list += 'nil'
     end
 
     def insert_at(value, index)
@@ -119,3 +129,6 @@ test.test_print
 puts linija
 
 p test.size
+p test.find(3)
+
+p test.to_s
