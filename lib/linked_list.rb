@@ -18,7 +18,7 @@ class LinkedList
     def test_print
        temp = @head
        while temp != nil
-        p temp.value 
+        puts temp.value 
         temp = temp.next_node
        end
     end
@@ -54,12 +54,19 @@ class LinkedList
 
     def at(index, ctr = 0, node = head)
         # Returns node at index
-        return "ERROR" if node == nil
+        return "ERROR! There is no node at that index" if node == nil
         index == ctr ? node.value : at(index, ctr+1, node.next_node)
     end
 
-    def pop
+    def shift 
+        # Removes first node 
+        @head = @head.next_node
+    end
+
+    def pop(node = @head)
         # Removes last node
+        return node.next_node = nil if node.next_node.next_node == nil
+        pop(node.next_node) 
     end
 
     def contains?(value)
@@ -83,8 +90,10 @@ class LinkedList
     end
 end
 
+linija = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='
 test = LinkedList.new
 
+puts linija
 test.prepend(321)
 test.append(1)
 test.append(7)
@@ -95,5 +104,18 @@ test.prepend(9)
 test.prepend(24)
 
 test.test_print
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-p test.at(7)
+
+puts linija
+
+test.pop
+
+test.test_print
+puts linija
+
+test.shift
+
+test.test_print
+
+puts linija
+
+p test.size
