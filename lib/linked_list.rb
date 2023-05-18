@@ -22,9 +22,9 @@ class LinkedList
 
     def prepend(value)
         # Add element to the begining of the Linked list
-        temp = Node.new(value)
-        temp.next_node = @head
-        @head = temp
+        node = Node.new(value)
+        node.next_node = @head
+        @head = node
     end
 
     def size(node = @head, ctr = 0)
@@ -38,10 +38,10 @@ class LinkedList
         @head
     end
 
-    def tail(temp = @head)
+    def tail(node = @head)
         # Return last node
-        return temp if temp.next_node == nil
-        tail(temp.next_node)
+        return node if node.next_node == nil
+        tail(node.next_node)
     end
 
     def at(index, ctr = 0, node = head)
