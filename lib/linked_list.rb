@@ -35,12 +35,15 @@ class LinkedList
         @head = temp
     end
 
-    def size
+    def size(node = @head, ctr = 0)
         # Return number of nodes in Linked List
+        return 'The list is empty!!!' if node == nil
+        node.next_node == nil ? ctr + 1 : size(node.next_node, ctr+1)
     end
 
     def head
         # Return first node
+        @head
     end
 
     def tail(temp = @head)
@@ -49,8 +52,10 @@ class LinkedList
         tail(temp.next_node)
     end
 
-    def at(index)
+    def at(index, ctr = 0, node = head)
         # Returns node at index
+        return "ERROR" if node == nil
+        index == ctr ? node.value : at(index, ctr+1, node.next_node)
     end
 
     def pop
@@ -80,6 +85,7 @@ end
 
 test = LinkedList.new
 
+test.prepend(321)
 test.append(1)
 test.append(7)
 test.append(2)
@@ -89,3 +95,5 @@ test.prepend(9)
 test.prepend(24)
 
 test.test_print
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+p test.at(7)
