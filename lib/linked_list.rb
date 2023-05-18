@@ -15,14 +15,6 @@ class LinkedList
         @head = nil
     end
 
-    def test_print
-       temp = @head
-       while temp != nil
-        puts temp.value 
-        temp = temp.next_node
-       end
-    end
-
     def append(value)
         # Add element to the end of the Linked List
         @head == nil ? @head = Node.new(value) : tail.next_node = Node.new(value)
@@ -55,7 +47,7 @@ class LinkedList
     def at(index, ctr = 0, node = head)
         # Returns node at index
         return "ERROR! There is no node at that index" if node == nil
-        index == ctr ? node.value : at(index, ctr+1, node.next_node)
+        index == ctr ? node : at(index, ctr+1, node.next_node)
     end
 
     def shift 
@@ -93,42 +85,23 @@ class LinkedList
 
     def insert_at(value, index)
         # Insert new node with value at index
+        return "ERROR!!! Invalid index" if index > size
+        return append(value) if index == size
+        return prepend(value) if index == 0
+
+        temp = Node.new(value)
+        node = at(index-1)
+        temp.next_node = node.next_node
+        node.next_node = temp
     end
 
     def remove_at(index)
         # Remove node from Linked List at index
+        return "ERROR!!! Invalid index" if index > size
+        return pop if index == (size - 1) 
+        return shift if index == 0
+
+        node = at(index-1)
+        node.next_node = node.next_node.next_node
     end
 end
-
-linija = '=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-='
-test = LinkedList.new
-
-puts linija
-test.prepend(321)
-test.append(1)
-test.append(7)
-test.append(2)
-test.append(3)
-test.append(4)
-test.prepend(9)
-test.prepend(24)
-
-test.test_print
-
-puts linija
-
-test.pop
-
-test.test_print
-puts linija
-
-test.shift
-
-test.test_print
-
-puts linija
-
-p test.size
-p test.find(3)
-
-p test.to_s
