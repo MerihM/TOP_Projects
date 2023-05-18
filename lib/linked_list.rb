@@ -25,15 +25,14 @@ class LinkedList
 
     def append(value)
         # Add element to the end of the Linked List
-        if @head == nil
-            @head = Node.new(value) 
-        else
-            tail.next_node = Node.new(value)
-        end
+        @head == nil ? @head = Node.new(value) : tail.next_node = Node.new(value)
     end
 
     def prepend(value)
         # Add element to the begining of the Linked list
+        temp = Node.new(value)
+        temp.next_node = @head
+        @head = temp
     end
 
     def size
@@ -86,5 +85,7 @@ test.append(7)
 test.append(2)
 test.append(3)
 test.append(4)
+test.prepend(9)
+test.prepend(24)
 
 test.test_print
