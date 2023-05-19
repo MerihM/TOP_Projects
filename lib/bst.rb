@@ -24,7 +24,14 @@ class BST
         return root
     end
 
-    def insert()
+    def insert(data, node = @root)
+        
+        return nil if data == node.data
+        if data < node.data 
+            node.left.nil? ? node.left = Node.new(data) : insert(data, node.left)
+        else
+            node.right.nil? ? node.right = Node.new(data) : insert(data, node.right)
+        end
 
     end
 
@@ -83,18 +90,17 @@ class BST
 
     end
 
-    def pretty_print(node = @root, prefix = '', is_left = true)
-        pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
-        puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
-        pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
-    end
-
 end
 
 bst = BST.new(Array.new(15){rand(1..100)})
-puts "Preorder: "
-bst.preorder
-puts "Inorder: "
+
+puts "Inorder before input: "
 bst.inorder
-puts "Postorder: "
-bst.postorder
+
+bst.insert(332)
+bst.insert(122)
+bst.insert(222)
+bst.insert(523)
+bst.insert(732)
+puts "Inorder after input: "
+bst.inorder
