@@ -65,7 +65,10 @@ class BST
         node
     end
 
-    def find()
+    def find(data, node = @root)
+
+        return node if node.nil? || data == node.data
+        data < node.data ? find(data, node.left) : find(data, node.right)
 
     end
 
@@ -116,6 +119,12 @@ class BST
 
     end
 
+    def pretty_print(node = root, prefix = '', is_left = true)
+        pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
+        puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
+        pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
+      end
+
 end
 
 bst = BST.new(Array.new(15){rand(1..100)})
@@ -128,8 +137,10 @@ bst.insert(122)
 bst.insert(222)
 bst.insert(523)
 bst.insert(732)
-puts "Inorder after input: "
-bst.inorder
-puts "Inorder after deletion of 523: "
-bst.delete(523)
-bst.inorder
+puts "After input: "
+bst.pretty_print
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+puts "After deletion of 523: "
+bst.delete(332)
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+bst.pretty_print
