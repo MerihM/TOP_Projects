@@ -6,3 +6,10 @@ class Node
         @right = right
     end
 end
+class BST
+    attr_accessor :root, :data
+    def initialize(array)
+        @data = array.sort.uniq
+        @root = build_tree(@data)
+    end
+end
