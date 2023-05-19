@@ -18,10 +18,6 @@ class GraphNode
         @path_from_start.concat(value_array)
     end
 
-    def to_s
-        puts "Value: #{@value}"
-        @adjacent_nodes.each {|mem| puts "\s\sChild node of #{value}: #{mem.value}"}
-    end
 end
 
 class Graph
@@ -31,25 +27,27 @@ class Graph
     end
 
     def add_node (node)
-        @nodes << GraphNode.new(node)
+        node.class != GraphNode ? @nodes << GraphNode.new(node) : @nodes << node
+        @nodes[-1].add_to_path(@nodes[-1].value)
     end
 
     def add_children(parent, arr_of_children)
         @nodes.each do 
             |node|
-            puts node.value
             if node.value == parent
                 arr_of_children.each do
                     |child|
-                    add_node(child)
+                    n_child = GraphNode.new(child)
+                    n_child.concat_to_path(node.path_from_start)
+                    add_node(n_child)
                     node.add_edge(@nodes[-1])
                 end
             end
         end
     end
 
-    def to_s 
-        @nodes.each {|mem| mem.to_s}
+    def find_path(node)
+        @nodes.each {|n| return n.path_from_start if n.value == node}
     end
 
 end
@@ -59,4 +57,6 @@ test.add_node (1)
 test.add_node (2)
 test.add_node (3)
 test.add_children(2, [6, 7, 9])
-test.to_s
+test.add_children(9, [0])
+test.add_children(0, [19, 23, 54])
+p test.find_path(54)
