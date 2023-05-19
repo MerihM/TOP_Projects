@@ -14,7 +14,7 @@ class BST
     end
 
     def build_tree(arr)
-        # creates balanced bst of Node objects
+        # creates balanced bst
         return nil if arr.empty?
 
         mid = (arr.size - 1) / 2
@@ -26,6 +26,7 @@ class BST
 
     def insert(data, node = @root)
         
+        # inserts data in bst
         return nil if data == node.data
         if data < node.data 
             node.left.nil? ? node.left = Node.new(data) : insert(data, node.left)
@@ -37,16 +38,20 @@ class BST
 
     def delete(data, node = @root)
 
+        # deletes data from bst
         return node if node.nil?
 
+        # if node has no children
         if data < node.data
             node.left = delete(data, node.left)
         elsif data > node.data
             node.right = delete(data, node.right)
         else
+        # if node has one child
             return node.right if node.left.nil?
             return node.left if node.right.nil?
 
+        # if node has two childs
             leftmost_node = leftmost(node.right)
             node.data = leftmost_node.data
             node.right = delete(leftmost_node.data, node.right)
@@ -72,8 +77,20 @@ class BST
 
     end
 
-    def level_order()
+    def level_order(node = @root)
 
+        # level order iterative method
+        puts "#{node.data}"
+        queue = []
+        queue << node.left unless node.left.nil?
+        queue << node.right unless node.right.nil?
+
+        while !queue.empty?
+            puts "#{queue[0].data}"
+            queue << queue[0].left unless queue[0].left.nil?
+            queue << queue[0].right unless queue[0].right.nil?
+            queue.shift
+        end    
     end
 
     def preorder(node = @root)
@@ -144,3 +161,5 @@ puts "After deletion of 523: "
 bst.delete(332)
 puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 bst.pretty_print
+puts "Level order "
+bst.level_order
