@@ -94,7 +94,7 @@ class BST
     end
 
     def preorder(node = @root)
-
+        # Preorder traversal of the bst
         return if node.nil?
         puts "#{node.data} "
         preorder(node.left)
@@ -103,7 +103,7 @@ class BST
     end
 
     def inorder(node = @root)
-
+        # Inorder traversal of the bst
         return if node.nil?
         inorder(node.left)
         puts "#{node.data} "
@@ -112,7 +112,7 @@ class BST
     end
 
     def postorder(node = @root)
-
+        # Postorder traversal of the bst
         return if node.nil?
         postorder(node.left)
         postorder(node.right)
@@ -120,12 +120,25 @@ class BST
 
     end
 
-    def height()
+    def height(node = @root)
+        # Height of the bst, height represents number of edges form root to lowest leaf
+        return -1 if node.nil?
+        [height(node.left), height(node.right)].max + 1
 
     end
 
-    def depth()
+    def depth(node = @root, parent = @root, edges = 0)
 
+        return edges if parent == node 
+        return -1 if parent.nil?
+
+        if node.data < parent.data
+            edges +=1
+            depth(node, parent.left, edges)
+        else node.data > parent.data
+            edges += 1
+            depth(node, parent.right, edges)
+        end
     end
 
     def balanced?()
@@ -140,7 +153,23 @@ class BST
         pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
         puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
         pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
-      end
+    end
+
+    def depth_test(node = @root)
+
+        # level order iterative method
+        puts "#{node.data} root node"
+        queue = []
+        queue << node.left unless node.left.nil?
+        queue << node.right unless node.right.nil?
+
+        while !queue.empty?
+            puts "#{queue[0].data} is at depth #{depth(queue[0])}"
+            queue << queue[0].left unless queue[0].left.nil?
+            queue << queue[0].right unless queue[0].right.nil?
+            queue.shift
+        end    
+    end
 
 end
 
@@ -163,3 +192,8 @@ puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 bst.pretty_print
 puts "Level order "
 bst.level_order
+puts "Height of the tree"
+puts bst.height
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+puts "Printing out depths of nodes"
+bst.depth_test
