@@ -141,12 +141,16 @@ class BST
         end
     end
 
-    def balanced?()
+    def balanced?(node = @root)
 
+        return true if node.nil?
+        return true if (height(node.left) - height(node.right)).abs <= 1 && balanced?(node.left) && balanced?(node.right)
+        false
     end
 
-    def rebalance()
-
+    def rebalance
+        self.data = inorder_arr
+        self.root = build_tree(data)
     end
 
     def pretty_print(node = root, prefix = '', is_left = true)
@@ -169,6 +173,15 @@ class BST
             queue << queue[0].right unless queue[0].right.nil?
             queue.shift
         end    
+    end
+
+    def inorder_arr(node = @root, arr = [])
+        unless node.nil?
+            inorder_arr(node.left, arr)
+            arr << node.data
+            inorder_arr(node.right, arr)
+        end
+        arr
     end
 
 end
@@ -197,3 +210,10 @@ puts bst.height
 puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
 puts "Printing out depths of nodes"
 bst.depth_test
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+puts "Checking if tree is balanced"
+puts bst.balanced?
+puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
+puts "Rebalancing tree"
+bst.rebalance
+bst.pretty_print
