@@ -35,8 +35,34 @@ class BST
 
     end
 
-    def delete()
+    def delete(data, node = @root)
 
+        return node if node.nil?
+
+        if data < node.data
+            node.left = delete(data, node.left)
+        elsif data > node.data
+            node.right = delete(data, node.right)
+        else
+            return node.right if node.left.nil?
+            return node.left if node.right.nil?
+
+            leftmost_node = leftmost(node.right)
+            node.data = leftmost_node.data
+            node.right = delete(leftmost_node.data, node.right)
+        end
+        node 
+
+    end
+
+    def leftmost(node)
+        node = node.left until node.left.nil?
+        node
+    end
+
+    def rightmost(node)
+        node = node.right until node.right.nil?
+        node
     end
 
     def find()
@@ -103,4 +129,7 @@ bst.insert(222)
 bst.insert(523)
 bst.insert(732)
 puts "Inorder after input: "
+bst.inorder
+puts "Inorder after deletion of 523: "
+bst.delete(523)
 bst.inorder
