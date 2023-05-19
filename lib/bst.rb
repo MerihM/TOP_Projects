@@ -61,17 +61,19 @@ class BST
     end
 
     def leftmost(node)
+        # finds leftmost node
         node = node.left until node.left.nil?
         node
     end
 
     def rightmost(node)
+        # finds rightmost node
         node = node.right until node.right.nil?
         node
     end
 
     def find(data, node = @root)
-
+        # finds data
         return node if node.nil? || data == node.data
         data < node.data ? find(data, node.left) : find(data, node.right)
 
@@ -79,7 +81,7 @@ class BST
 
     def level_order(node = @root)
 
-        # level order iterative method
+        # level order traversal of bst, iterative method
         puts "#{node.data}"
         queue = []
         queue << node.left unless node.left.nil?
@@ -128,7 +130,7 @@ class BST
     end
 
     def depth(node = @root, parent = @root, edges = 0)
-
+        # Depth of node in bst, depth represents number of edges from root to given node
         return edges if parent == node 
         return -1 if parent.nil?
 
@@ -142,18 +144,20 @@ class BST
     end
 
     def balanced?(node = @root)
-
+        # checks if bst is balanced
         return true if node.nil?
         return true if (height(node.left) - height(node.right)).abs <= 1 && balanced?(node.left) && balanced?(node.right)
         false
     end
 
     def rebalance
+        # rebalances bst
         self.data = inorder_arr
         self.root = build_tree(data)
     end
 
     def pretty_print(node = root, prefix = '', is_left = true)
+        #prints out bst
         pretty_print(node.right, "#{prefix}#{is_left ? '│   ' : '    '}", false) if node.right
         puts "#{prefix}#{is_left ? '└── ' : '┌── '}#{node.data}"
         pretty_print(node.left, "#{prefix}#{is_left ? '    ' : '│   '}", true) if node.left
@@ -161,7 +165,7 @@ class BST
 
     def depth_test(node = @root)
 
-        # level order iterative method
+        # test of depth with level order traversal
         puts "#{node.data} root node"
         queue = []
         queue << node.left unless node.left.nil?
@@ -176,6 +180,7 @@ class BST
     end
 
     def inorder_arr(node = @root, arr = [])
+        # sorted array from bst
         unless node.nil?
             inorder_arr(node.left, arr)
             arr << node.data
@@ -185,35 +190,3 @@ class BST
     end
 
 end
-
-bst = BST.new(Array.new(15){rand(1..100)})
-
-puts "Inorder before input: "
-bst.inorder
-
-bst.insert(332)
-bst.insert(122)
-bst.insert(222)
-bst.insert(523)
-bst.insert(732)
-puts "After input: "
-bst.pretty_print
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-puts "After deletion of 523: "
-bst.delete(332)
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-bst.pretty_print
-puts "Level order "
-bst.level_order
-puts "Height of the tree"
-puts bst.height
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-puts "Printing out depths of nodes"
-bst.depth_test
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-puts "Checking if tree is balanced"
-puts bst.balanced?
-puts "=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-="
-puts "Rebalancing tree"
-bst.rebalance
-bst.pretty_print
