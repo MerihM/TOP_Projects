@@ -51,12 +51,3 @@ class Graph
     end
 
 end
-
-test = Graph.new()
-test.add_node (1)
-test.add_node (2)
-test.add_node (3)
-test.add_children(2, [6, 7, 9])
-test.add_children(9, [0])
-test.add_children(0, [19, 23, 54])
-p test.find_path(54)
