@@ -33,7 +33,8 @@ class Knight
         end
     end
 
-    def print_path
+    def find_path
+        calculate_positions
         to_print = @graph.find_path(@target)
         string_path = ''
         for i in 0..(to_print.length-2)
@@ -45,7 +46,3 @@ class Knight
         puts "Those moves are " + string_path
     end
 end
-
-test = Knight.new([0, 0], [7, 7])
-test.calculate_positions
-test.print_path
