@@ -34,10 +34,18 @@ class Knight
     end
 
     def print_path
-        @graph.find_path(@target)
+        to_print = @graph.find_path(@target)
+        string_path = ''
+        for i in 0..(to_print.length-2)
+            string_path += to_print[i].to_s
+            string_path += " -> "
+        end
+        string_path += to_print[-1].to_s
+        puts "To get from #{@current} to #{@target} it takes #{to_print.length-1} moves"
+        puts "Those moves are " + string_path
     end
 end
 
-test = Knight.new([1, 1], [2, 3])
+test = Knight.new([0, 0], [7, 7])
 test.calculate_positions
-p test.calculated_positions
+test.print_path
