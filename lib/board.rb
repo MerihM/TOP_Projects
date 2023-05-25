@@ -10,7 +10,10 @@ class Board
         for i in 0..5 do
             pos_ctr += 1 if board_arr[i][position] != 'i'
         end
-        return "That column is full!!!" if pos_ctr == 6 
+        if pos_ctr == 6 
+            puts "That column is full!!!"
+            return
+        end
 
         5.downto(0) do 
             |i|
@@ -20,5 +23,23 @@ class Board
             end
         end
         board_arr
+    end
+
+    def print_board
+        line_ver = "|       |       |       |       |       |       |       |\n" 
+        line_hor = "_________________________________________________________\n" 
+        big_string = line_hor + line_ver
+        
+        board_arr.each do 
+            |arr|
+            for i in 0..6 do
+                big_string += "|   #{arr[i]}   " 
+            end
+            big_string += "|\n"
+            big_string += line_ver 
+            big_string += line_hor 
+            big_string += line_ver 
+        end
+        puts big_string.chomp!(line_ver)
     end
 end
