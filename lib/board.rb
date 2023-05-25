@@ -10,7 +10,7 @@ class Board
         for i in 0..5 do
             pos_ctr += 1 if board_arr[i][position] != 'i'
         end
-        return puts "That column is full!!!" if pos_ctr == 6 
+        return "That column is full!!!" if pos_ctr == 6 
 
         5.downto(0) do 
             |i|
