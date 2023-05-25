@@ -6,6 +6,12 @@ class Board
     end
 
     def add_token(token, position)
+        pos_ctr = 0
+        for i in 0..5 do
+            pos_ctr += 1 if board_arr[i][position] != 'i'
+        end
+        return puts "That column is full!!!" if pos_ctr == 6 
+
         5.downto(0) do 
             |i|
             if board_arr[i][position] == 'i'
@@ -15,13 +21,3 @@ class Board
         end
     end
 end
-
-brd = Board.new
-brd.add_token('a', 4)
-brd.add_token('x', 4)
-brd.add_token('a', 4)
-brd.add_token('x', 4)
-brd.add_token('a', 4)
-brd.add_token('x', 4)
-brd.add_token('a', 4)
-p brd.board_arr
