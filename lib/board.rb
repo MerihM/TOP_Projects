@@ -19,5 +19,6 @@ class Board
                 break
             end
         end
+        board_arr
     end
 end
