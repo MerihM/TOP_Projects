@@ -11,6 +11,7 @@ def new_game
         break if game.win 
         round_count+=1
         p round_count
-        STDIN.getch
     end
 end
+
+new_game
