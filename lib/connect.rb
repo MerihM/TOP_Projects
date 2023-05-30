@@ -8,6 +8,37 @@ class Connect
         @board = Board.new
     end    
 
-    
+    def play_round(position = rand(7)) # has to take user input for position argument, rand for testing
+        system "clear"
+        @player_one_status ? token = player_one_token : token = player_two_token
+        if board.add_token(token, position) == "That column is full!!!"
+            play_round
+            return
+        end
+        board.print_board
+        @player_one_status = !player_one_status
+    end
 
 end
+
+game = Connect.new
+55.times{game.play_round}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
