@@ -41,9 +41,10 @@ class Connect
 
         board.board_arr.each do
             |arr|
-            consecutive_tokens = horizontal_check(arr, consecutive_tokens)
-            return consecutive_tokens if consecutive_tokens == 4
+            consecutive_tokens = horizontal_check(arr, consecutive_tokens.to_i)
+            return consecutive_tokens if consecutive_tokens == 3
         end
+        p "There is no 4 same tokens"
         # vertical_check
         # diagonal_check
 
@@ -51,14 +52,27 @@ class Connect
 
     def horizontal_check(arr, ctr)
 
-        p arr
-        4
+        p "Checking #{arr}"
+        return if arr.length <= 0
+        if ctr == 3
+            @win = true
+            return ctr
+        end
+        if arr[0] == arr[1] && arr[0] != "i"
+            horizontal_check(arr[1..arr.length-1], ctr + 1)
+        else
+            horizontal_check(arr[1..arr.length-1], 0) 
+        end
     end
 
 end
 
+test_arr = [1, 1, 2, 2, 3, 3, 4, 4]
 game = Connect.new
-# 4.times{game.play_round}
+test_arr.each do 
+    |num|
+    game.play_round(num)
+end
 game.check_win
 
 
