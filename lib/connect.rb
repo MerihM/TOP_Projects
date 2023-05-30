@@ -35,8 +35,6 @@ class Connect
     end
 
     def check_win
-
-        direction = [[1, 1], [1, -1], [-1, 1], [-1, -1]]
         consecutive_tokens = 0
         board.board_arr.each do
             |arr|
@@ -44,7 +42,7 @@ class Connect
             return if @win
         end
         vertical_check
-        # diagonal_check
+        diagonal_check
 
     end
 
@@ -71,16 +69,30 @@ class Connect
         vertical_check(pos+1)
     end
 
-end
+    def diagonal_check
+        direction = [[-1, 1], [-1, -1]]
+        direction.each do
+            |dir_arr| 
+            board.board_arr.each_with_index do
+                |arr, index|
+                arr.each_with_index do
+                    |num, index_two|
+                    temp_arr = []
+                    i = index
+                    j = index_two
+                    while i.between?(0,5) && j.between?(0,6)
+                        temp_arr << board.board_arr[i][j]
+                        i += dir_arr[0]
+                        j += dir_arr[1]
+                    end
+                    horizontal_check(temp_arr, 0) if temp_arr.length >= 4
+                    return if @win
+                end
+            end
+        end
+    end
 
-test_arr = [1, 2, 1, 2, 1, 2, 1]
-game = Connect.new
-test_arr.each do 
-    |num|
-    game.play_round(num)
 end
-game.check_win
-p game.win
 
 
 
