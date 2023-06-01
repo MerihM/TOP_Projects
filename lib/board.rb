@@ -55,6 +55,3 @@ class Board
         puts "     a    b    c    d    e    f    g    h  \n\n"
       end
 end
-
-brd = Board.new
-brd.display
