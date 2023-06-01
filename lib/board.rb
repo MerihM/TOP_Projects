@@ -11,8 +11,6 @@ class Board
 
 
     def display
-        # clear
-        # ChessText.title
         display_top_border
         display_rows
         display_bottom_border
