@@ -7,4 +7,5 @@ class Piece
         @possible_moves = []
         @color = is_white ? 'white' : 'black'
     end
+    
 end
