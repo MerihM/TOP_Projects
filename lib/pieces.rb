@@ -1,33 +1,10 @@
-class Pawn
-    attr_accessor :move
-    def initialize
-        @move = [0, 1]
-    end
-end
+class Piece
+    attr_accessor :moveset, :x, :y, :icon, :possible_moves, :color
 
-class Rook
-    attr_accessor :move
-    
-end
-
-class Knight
-    attr_accessor :move
-    def initialize
-        @move = [[1, 2], [1, -2], [-1, 2], [-1, -2], [2, 1], [2, -1], [-2, 1], [-2, -1]]
-    end
-end
-
-class Bishop 
-
-end
-
-class Queen
-
-end
-
-class King 
-    attr_accessor :move
-    def initialize
-        @move = [[0, 1], [0, -1], [1, 0], [-1, 0], [1, 1], [1, -1], [-1, 1], [-1, -1]]
+    def initialize(position, is_white)
+        @x = position[0]
+        @y = position[1]
+        @possible_moves = []
+        @color = is_white ? 'white' : 'black'
     end
 end
