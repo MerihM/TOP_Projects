@@ -12,7 +12,7 @@ class Piece
         return x.between?(0, 7) && y.between?(0, 7)
     end
 
-    def find_possible_moves(pos)
+    def find_possible_moves(position)
         @possible_moves = []
         @moveset.each do 
             |move|
@@ -21,8 +21,8 @@ class Piece
 
             loop do 
                 break if !on_board?(x, y)
-                @possible_moves << [x, y] if pos[x][y].nil? || pos[x][y].color != @color
-                break if !pos[x][y].nil?
+                @possible_moves << [x, y] if position[x][y].nil? || position[x][y].color != @color
+                break if !position[x][y].nil?
                 x += move[0]
                 y += move[1]
             end
@@ -46,7 +46,7 @@ class Pawn < Piece
         @moveset.each_key {|move_type| @moveset[move_type][0] *= -1} if @color == 'white'
     end
 
-    def find_possible_moves(pos)
+    def find_possible_moves(position)
         @possible_moves = []
         @moveset.each_key do 
             |move_type|
@@ -57,25 +57,25 @@ class Pawn < Piece
 
             case move_type
             when :move_forward
-                @possible_moves << [x, y] if pos[x][y].nil?
+                @possible_moves << [x, y] if position[x][y].nil?
             when :double_step
-                @possible_moves << [x, y] if pos[x][y].nil? && pos[(x + @x)/2][y].nil? && !@has_moved
+                @possible_moves << [x, y] if position[x][y].nil? && position[(x + @x)/2][y].nil? && !@has_moved
             when :right_diagonal, :left_diagonal
-                @possible_moves << [x, y] if !pos[x][y].nil? && pos[x][y].color != @color
-                en_passant(pos, x, y)
+                @possible_moves << [x, y] if !position[x][y].nil? && position[x][y].color != @color
+                en_passant(position, x, y)
             end
         end
     end
 
-    def en_passant(pos, x, y)
-        if pos[x][y].nil?
+    def en_passant(position, x, y)
+        if position[x][y].nil?
             if @color == 'white'
-                if pos[x+1][y].instance_of(Pawn) && pos[x+1][y].double_stepped
+                if position[x+1][y].instance_of(Pawn) && position[x+1][y].double_stepped
                     @possible_moves << [x, y]
                 end
             end
             if @color == 'black'
-                if pos[x-1][y].instance_of(Pawn) && pos[x-1][y].double_stepped
+                if position[x-1][y].instance_of(Pawn) && position[x-1][y].double_stepped
                     @possible_moves << [x, y]
                 end
             end
@@ -86,7 +86,7 @@ end
 class Rook < Piece
     attr_accessor :has_moved
 
-    def initialize(pos, is_white)
+    def initialize(position, is_white)
         @moveset = [
             [0, 1]
             [0, -1]
@@ -97,4 +97,19 @@ class Rook < Piece
         @icon = is_white ? '♜' : '♖'
         super
     end
+end
+
+class Bishop < Piece
+
+    def initialize(position, is_white)
+        @moveset = [
+            [1, 1]
+            [1, -1]
+            [-1, 1]
+            [-1, -1]
+        ]
+        @icon = is_white ? '♝' : '♗'
+        super
+    end
+
 end
