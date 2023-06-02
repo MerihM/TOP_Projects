@@ -88,9 +88,9 @@ class Rook < Piece
 
     def initialize(position, is_white)
         @moveset = [
-            [0, 1]
-            [0, -1]
-            [1, 0]
+            [0, 1],
+            [0, -1],
+            [1, 0],
             [-1, 0]
         ]
         @has_moved = false
@@ -103,13 +103,29 @@ class Bishop < Piece
 
     def initialize(position, is_white)
         @moveset = [
-            [1, 1]
-            [1, -1]
-            [-1, 1]
+            [1, 1],
+            [1, -1],
+            [-1, 1],
             [-1, -1]
         ]
         @icon = is_white ? '♝' : '♗'
         super
     end
+end
 
+class Queen < Piece
+    def initialize(position, is_white)
+        @moveset = [
+            [1, 1],
+            [1, -1],
+            [-1, 1],
+            [-1, -1],
+            [1, 0],
+            [0, 1],
+            [-1, 0],
+            [0, -1]
+        ]
+        @icon = is_white ? '♛' : '♕'
+        super
+    end
 end
