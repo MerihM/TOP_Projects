@@ -55,23 +55,3 @@ class Board
         puts "     a    b    c    d    e    f    g    h  \n\n"
       end
 end
-
-class King < Piece
-  attr_accessor :has_moved
-
-  def initialize(position, is_white)
-    @moveset = [
-      [1, 1],
-      [1, 0],
-      [1, -1],
-      [-1, 0],
-      [-1, 1],
-      [0, 1],
-      [-1, -1],
-      [0, -1]
-    ]
-    @icon = is_white ? '♚' : '♔'
-    @has_moved = false
-    super
-  end
-end
