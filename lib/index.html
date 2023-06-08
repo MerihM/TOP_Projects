@@ -16,22 +16,37 @@
                 <h1>Let's do this!</h1>
                 <button type="reset">Reset</button>
             </div>
-            <label for="firstn">First Name</label>
-            <input type="text" id="firstn" name="firstn" placeholder="John" required>
-            <label for="lastn">Last Name</label>
-            <input type="text" id="lastn" name="lastn" placeholder="Smith" required>
-            <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="example@mail.com" required>
-            <label for="phone">Phone number</label>
-            <input type="text" id="phone" name="phone" placeholder="">
-            <label for="pword">Password</label>
-            <input type="password" id="pword" name=">pword" required>
-            <label for="pword_conf">Confirm Password</label>
-            <input type="password" id="pword_conf" name="pword_conf" required>
+
+            <div class="groupOfTwo">
+                <div class="group"> <label for="firstn">First Name</label>
+                    <input type="text" id="firstn" name="firstn" placeholder="John" required>
+                </div>
+                <div class="group"> <label for="lastn">Last Name</label>
+                    <input type="text" id="lastn" name="lastn" placeholder="Smith" required>
+                </div>
+            </div>
+
+            <div class="groupOfTwo">
+                <div class="group"><label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="example@mail.com" required>
+                </div>
+                <div class="group"> <label for="phone">Phone number</label>
+                    <input type="text" id="phone" name="phone" placeholder="">
+                </div>
+            </div>
+
+            <div class="groupOfTwo">
+                <div class="group"> <label for="pword">Password</label>
+                    <input type="password" id="pword" name=">pword" required>
+                </div>
+                <div class="group"> <label for="pword_conf">Confirm Password</label>
+                    <input type="password" id="pword_conf" name="pword_conf" required>
+                </div>
+            </div>
 
         </fieldset>
 
-        <div>
+        <div class="formFooter">
             <button type="submit">Create Account</button>
             <p>Already have an account? <a href="">Log in</a></p>
         </div>
