@@ -3,6 +3,31 @@
     src: url(../fonts/tt2020/TT_F.ttf);
 }
 
+@font-face {
+    font-family: "Bahiana";
+    src: url(../fonts/Bahiana-for-Print/Bahiana-Regular.otf);
+}
+
+@font-face {
+    font-family: "HussarSzturm";
+    src: url(../fonts/HussarSzturm/HussarSzturm.otf);
+}
+
+@font-face {
+    font-family: "JM_Nexus";
+    src: url(../fonts/jm-nexus-font/J.M.Nexus-Grotesque.ttf);
+}
+
+@font-face {
+    font-family: "Lib_Font";
+    src: url(../fonts/lib-font/LibHandDis/LibHandDis-Regular.otf);
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url(../fonts/oswald/Oswald-Stencbab.ttf);
+}
+
 body {
-    font-family: TT_F;
+    font-family: Oswald;
 }
