@@ -1,9 +1,4 @@
 @font-face {
-    font-family: "TT_F";
-    src: url(../fonts/tt2020/TT_F.ttf);
-}
-
-@font-face {
     font-family: "Bahiana";
     src: url(../fonts/Bahiana-for-Print/Bahiana-Regular.otf);
 }
@@ -32,6 +27,7 @@ body {
     font-family: Oswald;
     display: flex;
     justify-content: space-between;
+    color: rgb(32, 26, 26);
 }
 
 .groupOfTwo {
@@ -88,5 +84,40 @@ fieldset {
     background-color: white;
     display: flex;
     flex-direction: column;
-    height: 70%;
+    height: 60%;
+}
+
+.formFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+}
+
+.text {
+    padding: 2% 2% 0 2%;
+}
+
+.formFooter>p {
+    padding-top: 2%;
+}
+
+label {
+    font-size: 12px;
+    padding-bottom: 2%;
+}
+
+button {
+    width: 20%;
+    background-color: rgb(47, 144, 27);
+    border-radius: 5%;
+    border: 0px solid white;
+    padding: 1% 0;
+    font-family: JM_Nexus;
+}
+
+a:visited,
+a {
+    text-decoration: none;
+    color: rgb(32, 26, 26);
 }
