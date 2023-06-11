@@ -1,0 +1,6 @@
+w 2017-02-18 - scruss
+ - initial version from scan, plus crude punctuation
+
+2017-02-19 - scruss
+ - cleanups and kerning (still rough)
+ 
