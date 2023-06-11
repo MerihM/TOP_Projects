@@ -1,0 +1,8 @@
+@font-face {
+    font-family: "TT_F";
+    src: url(../fonts/tt2020/TT_F.ttf);
+}
+
+body {
+    font-family: TT_F;
+}
