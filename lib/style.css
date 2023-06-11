@@ -74,4 +74,12 @@ body {
 
 form {
     padding-top: 10%;
+    height: 70%;
+}
+
+fieldset {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 70%;
 }
