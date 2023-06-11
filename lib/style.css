@@ -37,6 +37,7 @@ body {
 .groupOfTwo {
     display: flex;
     justify-content: space-evenly;
+    padding: 1% 0;
 }
 
 .group {
@@ -75,6 +76,12 @@ body {
 form {
     padding-top: 10%;
     height: 70%;
+}
+
+.formHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 10%;
 }
 
 fieldset {
