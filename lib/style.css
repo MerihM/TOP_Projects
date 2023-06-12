@@ -121,3 +121,18 @@ a {
     text-decoration: none;
     color: rgb(32, 26, 26);
 }
+
+input {
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+input[required]:valid {
+    border-bottom: solid rgb(29, 198, 29) 2px;
+    border-right: solid rgb(29, 198, 29) 2px;
+    box-shadow: 2px 2px 4px rgb(29, 198, 29);
+}
+
+input:invalid {
+    box-shadow: 2px 2px 4px rgb(235, 18, 18);
+}
