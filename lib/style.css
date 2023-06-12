@@ -136,3 +136,15 @@ input[required]:valid {
 input:invalid {
     box-shadow: 2px 2px 4px rgb(235, 18, 18);
 }
+
+span,
+.required {
+    color: red;
+}
+
+.required {
+    position: relative;
+    font-size: 12px;
+    top: -24vh;
+    left: 10vw;
+}
