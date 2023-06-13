@@ -127,13 +127,15 @@ input {
     border-radius: 5px;
 }
 
-input[required]:valid {
+input[required]:valid,
+.valid {
     border-bottom: solid rgb(29, 198, 29) 2px;
     border-right: solid rgb(29, 198, 29) 2px;
     box-shadow: 2px 2px 4px rgb(29, 198, 29);
 }
 
-input:invalid {
+input:invalid,
+.invalid {
     box-shadow: 2px 2px 4px rgb(235, 18, 18);
 }
 
