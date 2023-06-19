@@ -60,7 +60,8 @@
                 <div class="groupOfTwo">
                     <div class="group">
                         <label for="pword">Password <span>*</span></label>
-                        <input type="password" id="pword" name=">pword" required>
+                        <input type="password" id="pword" name=">pword" pattern="^(?=.*[a-zA-Z])(?=.*[0-9]).{8,}$"
+                            required>
                     </div>
                     <div class="group">
                         <label for="pword_conf">Confirm Password <span>*</span></label>
