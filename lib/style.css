@@ -127,7 +127,7 @@ input {
     border-radius: 5px;
 }
 
-input[required]:valid,
+input:valid,
 .valid {
     border-bottom: solid rgb(29, 198, 29) 2px;
     border-right: solid rgb(29, 198, 29) 2px;
@@ -148,5 +148,5 @@ span,
     position: relative;
     font-size: 12px;
     top: -24vh;
-    left: 10vw;
+    left: 30vw;
 }
