@@ -67,3 +67,25 @@
     font-family: "Rajdhani";
     src: url(../../fonts/Rajdhani/Rajdhani-SemiBold.ttf);
 }
+
+/* --------------------------------------------------Font Classes--------------------------------------------------------------- */
+
+.exo2 {
+    font-family: Exo2;
+}
+
+.josefin {
+    font-family: Josefin;
+}
+
+.lexend {
+    font-family: Lexend;
+}
+
+.montserrat {
+    font-family: Montserrat;
+}
+
+.rajdhani {
+    font-family: Rajdhani;
+}
