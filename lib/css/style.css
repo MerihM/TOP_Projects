@@ -1,1 +1,26 @@
 /* exo2 lexend josefin montserrat rajdhani */
+
+.container {
+    display: grid;
+    grid-template: repeat(50, 1fr) / repeat(50, 1fr);
+    width: 100vw;
+    height: 100vh;
+}
+
+aside {
+    background-color: #8a2be2;
+    grid-column: 1 / 12;
+    grid-row: 1 / 51;
+}
+
+nav {
+    background-color: #ddcbff;
+    grid-column: 12 / 51;
+    grid-row: 1 / 9;
+}
+
+main {
+    background-color: #bb98ff;
+    grid-column: 12 / 51;
+    grid-row: 9 / 51;
+}
