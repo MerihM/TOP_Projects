@@ -28,3 +28,13 @@ main {
 .someText {
     color: white;
 }
+
+.smallIMG {
+    width: 12%;
+    height: 12%;
+}
+
+.largeIMG {
+    width: 25%;
+    height: 25%;
+}
