@@ -9,18 +9,22 @@
 
 aside {
     background-color: #8a2be2;
-    grid-column: 1 / 12;
+    grid-column: 1 / 11;
     grid-row: 1 / 51;
 }
 
 nav {
     background-color: #ddcbff;
-    grid-column: 12 / 51;
+    grid-column: 11 / 51;
     grid-row: 1 / 9;
 }
 
 main {
     background-color: #bb98ff;
-    grid-column: 12 / 51;
+    grid-column: 11 / 51;
     grid-row: 9 / 51;
+}
+
+.someText {
+    color: white;
 }
