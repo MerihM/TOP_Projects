@@ -81,7 +81,7 @@ main {
 
 .roundIMG {
     height: 2.3rem;
-    width: 2.3rem;
+    width: 2.5rem;
     border-radius: 50%;
 }
 
@@ -109,4 +109,45 @@ main {
     width: 80%;
     border: none;
     border-radius: 7px;
+}
+
+.lowerNav {
+    margin: 0 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.smallText {
+    font-size: 0.8rem;
+}
+
+.helloMsg {
+    width: 50%;
+    display: flex;
+}
+
+.userGreet {
+    margin-top: 2%;
+    padding-left: 4%;
+}
+
+.buttons {
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    justify-self: flex-end;
+}
+
+button {
+    width: 5em;
+    height: 2em;
+    border: none;
+    color: white;
+    background-color: #8a2be2;
+    border-radius: 10px;
+}
+
+button:hover {
+    background-color: #761baa;
 }
