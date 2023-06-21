@@ -29,6 +29,8 @@ main {
     color: white;
     font-size: 0.8em;
     padding-left: 6%;
+    align-self: center;
+    font-weight: 500;
 }
 
 .smallIMG {
@@ -46,13 +48,17 @@ main {
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-end;
-    padding-left: 7%;
-    padding-bottom: 4%;
+    padding: 4% 0 4% 7%;
+    text-decoration: none;
+}
+
+.imgTextGroup:hover {
+    background-color: #761baa;
 }
 
 .bigText {
     font-size: 1.1em;
-    font-weight: 700;
+    font-weight: 900;
     align-self: center;
 }
 
