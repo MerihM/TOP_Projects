@@ -27,6 +27,7 @@ main {
 
 .someText {
     color: white;
+    font-size: 0.8em;
     padding-left: 6%;
 }
 
@@ -44,7 +45,17 @@ main {
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-end;
     padding-left: 7%;
     padding-bottom: 4%;
+}
+
+.bigText {
+    font-size: 1.1em;
+    font-weight: 700;
+    align-self: center;
+}
+
+.groupAsideItems {
+    margin-top: 30%;
 }
