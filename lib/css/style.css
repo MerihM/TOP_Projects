@@ -17,6 +17,8 @@ nav {
     background-color: #ddcbff;
     grid-column: 11 / 51;
     grid-row: 1 / 9;
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
 }
 
 main {
@@ -24,6 +26,8 @@ main {
     grid-column: 11 / 51;
     grid-row: 9 / 51;
 }
+
+/* ********************************************** ASIDE ***************************************************** */
 
 .someText {
     color: white;
@@ -64,4 +68,36 @@ main {
 
 .groupAsideItems {
     margin-top: 30%;
+}
+
+/* ********************************************** NAV ***************************************************** */
+
+.upperNav {
+    display: grid;
+    grid-template: 1fr / repeat(20, 1fr);
+}
+
+.roundIMG {
+    height: 2.3rem;
+    width: 2.3rem;
+    border-radius: 50%;
+}
+
+.navIcons {
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.accountInfo,
+.searchBar {
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(20, 1fr);
+}
+
+.searchBar {
+    grid-column: 2/4;
+}
+
+.accountInfo {
+    grid-column: 14 / 20;
 }
