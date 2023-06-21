@@ -27,6 +27,7 @@ main {
 
 .someText {
     color: white;
+    padding-left: 6%;
 }
 
 .smallIMG {
@@ -37,4 +38,13 @@ main {
 .largeIMG {
     width: 25%;
     height: 25%;
+}
+
+.imgTextGroup {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    padding-left: 7%;
+    padding-bottom: 4%;
 }
