@@ -165,7 +165,7 @@ button:hover {
 
 .projects {
     display: grid;
-    grid-template: 1fr / repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 2%;
     padding: 2%;
 }
@@ -175,5 +175,19 @@ button:hover {
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    border: solid rgb(85, 78, 78) 0.1rem;
+    border-left: rgb(14, 180, 14) solid 8px;
+    border-radius: 5px;
+    padding: 0 2%;
+}
+
+.smallIMGmain {
+    height: 1.4rem;
+    width: 1.4rem;
+    padding: 0 0.8rem;
+}
+
+.actionIcons {
+    height: 5%;
+    display: flex;
+    justify-content: flex-end;
 }
