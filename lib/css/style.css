@@ -1,4 +1,10 @@
 /* exo2 lexend josefin montserrat rajdhani */
+:root {
+    --background-color: #b7b0c4;
+    --aside-color: #8a2be2;
+    --light-color: rgb(227, 227, 227);
+    --hover-color: #761baa;
+}
 
 .container {
     display: grid;
@@ -8,14 +14,14 @@
 }
 
 aside {
-    background-color: #8a2be2;
+    background-color: var(--aside-color);
     grid-column: 1 / 11;
     grid-row: 1 / 51;
     height: 100%;
 }
 
 nav {
-    background-color: #ddcbff;
+    background-color: var(--light-color);
     grid-column: 11 / 51;
     grid-row: 1 / 9;
     display: grid;
@@ -23,7 +29,7 @@ nav {
 }
 
 main {
-    background-color: #bb98ff;
+    background-color: var(--background-color);
     grid-column: 11 / 51;
     grid-row: 9 / 51;
     display: grid;
@@ -60,7 +66,7 @@ main {
 }
 
 .imgTextGroup:hover {
-    background-color: #761baa;
+    background-color: var(--hover-color);
 }
 
 .bigText {
@@ -108,7 +114,7 @@ main {
 }
 
 .searchBar>input {
-    background-color: #b7b0c4;
+    background-color: var(--background-color);
     width: 80%;
     border: none;
     border-radius: 7px;
@@ -147,12 +153,12 @@ button {
     height: 2em;
     border: none;
     color: white;
-    background-color: #8a2be2;
+    background-color: var(--aside-color);
     border-radius: 10px;
 }
 
 button:hover {
-    background-color: #761baa;
+    background-color: var(--hover-color);
 }
 
 /* ********************************************** MAIN ***************************************************** */
@@ -165,6 +171,7 @@ button:hover {
 }
 
 .projContainer {
+    background-color: var(--light-color);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
