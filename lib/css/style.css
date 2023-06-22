@@ -164,10 +164,10 @@ button:hover {
 /* ********************************************** MAIN ***************************************************** */
 
 .projects {
+    height: 80%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 2%;
-    padding: 2%;
 }
 
 .projContainer {
@@ -190,4 +190,17 @@ button:hover {
     height: 5%;
     display: flex;
     justify-content: flex-end;
+}
+
+.proj {
+    display: flex;
+    flex-direction: column;
+    margin-left: 5%;
+    height: 100%;
+}
+
+h3 {
+    padding: 3% 0;
+    font-weight: 700;
+    font-size: 1rem;
 }
