@@ -1,8 +1,8 @@
 /* exo2 lexend josefin montserrat rajdhani */
 :root {
     --background-color: #b7b0c4;
-    --aside-color: #8a2be2;
     --light-color: rgb(227, 227, 227);
+    --aside-color: #8a2be2;
     --hover-color: #761baa;
 }
 
@@ -192,7 +192,7 @@ button:hover {
     justify-content: flex-end;
 }
 
-.proj {
+.cont {
     display: flex;
     flex-direction: column;
     margin-left: 5%;
@@ -203,4 +203,44 @@ h3 {
     padding: 3% 0;
     font-weight: 700;
     font-size: 1rem;
+}
+
+.info {
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr;
+    padding: 5% 10%;
+}
+
+.infoCont {
+    margin-bottom: 5%;
+    padding-left: 10%;
+}
+
+.contInfo {
+    padding: 5%;
+    height: 90%;
+    background-color: var(--light-color);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+span {
+    font-weight: 900;
+    font-size: 0.7rem;
+}
+
+.specDiv {
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 10px 0;
+}
+
+.lightText {
+    color: rgba(0, 0, 0, 0.801);
+}
+
+.heading {
+    font-weight: 900;
 }
