@@ -244,3 +244,7 @@ span {
 .heading {
     font-weight: 900;
 }
+
+.accInfo {
+    display: flex;
+}
