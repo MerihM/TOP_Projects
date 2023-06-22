@@ -3,14 +3,15 @@
 .container {
     display: grid;
     grid-template: repeat(50, 1fr) / repeat(50, 1fr);
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
 }
 
 aside {
     background-color: #8a2be2;
     grid-column: 1 / 11;
     grid-row: 1 / 51;
+    height: 100%;
 }
 
 nav {
@@ -25,6 +26,8 @@ main {
     background-color: #bb98ff;
     grid-column: 11 / 51;
     grid-row: 9 / 51;
+    display: grid;
+    grid-template: 1fr / 2fr 1fr;
 }
 
 /* ********************************************** ASIDE ***************************************************** */
@@ -150,4 +153,20 @@ button {
 
 button:hover {
     background-color: #761baa;
+}
+
+/* ********************************************** MAIN ***************************************************** */
+
+.projects {
+    display: grid;
+    grid-template: 1fr / repeat(2, 1fr);
+    gap: 2%;
+    padding: 2%;
+}
+
+.projContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border: solid rgb(85, 78, 78) 0.1rem;
 }
