@@ -25,3 +25,12 @@
         <%= submit_tag ('Submit
     <%end %>
 
+<%= form_with model: @user do |form|%>
+    <%=label(:user, :username)%>
+    <%= form.text_field :username%>
+    <%= label(:user, :email)%>
+    <%= form.email_field :email%>
+    <%= label(:user, :password)%>
+    <%= form.password_field :password%>
+    <%= form.submit %>
+<%end%>
