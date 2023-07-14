@@ -77,3 +77,4 @@ gem "devise", "~> 4.9"
 gem 'sassc', '~> 2.1.0'
 gem 'bootstrap', '~> 5.3.0.alpha3'
 gem 'jquery-rails'
+gem "cssbundling-rails", "~> 1.2"
