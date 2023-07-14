@@ -10,7 +10,16 @@
           <a class="nav-link active text-light" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link text-light" href="#">Link</a>
+          <%= link_to 'Sign Up', new_user_registration_path, class:'nav-link text-light'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign In', new_user_session_path, class:'nav-link text-light'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Sign Out', destroy_user_session_path, class:'nav-link text-light'%>
+        </li>
+        <li class="nav-item">
+          <%= link_to 'Edit Profile', edit_user_registration_path, class:'nav-link text-light'%>
         </li>
       </ul>
     </div>
