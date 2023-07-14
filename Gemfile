@@ -73,3 +73,7 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem 'sassc', '~> 2.1.0'
+gem 'bootstrap', '~> 5.3.0.alpha3'
+gem 'jquery-rails'
