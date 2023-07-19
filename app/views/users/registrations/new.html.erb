@@ -25,10 +25,9 @@
       <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
     </div>
 
-    <div class="actions p-2">
+    <div class="actions p-2 d-flex justify-content-between">
       <%= f.submit "Sign Up", class: 'btn btn-secondary'%>
-      <%# <%= link_to "Sign In", user_sign_in_path, class: 'btn btn-secondary'%> %>
-      <%= render "users/shared/links" %>
+      <%= link_to "Sign In", new_session_path(resource_name), class: 'btn btn-secondary'%>
     </div>
   <% end %>
 
