@@ -20,7 +20,6 @@
     <%= form.text_area :body, autofocus: true, autocomplete: "body" %>
   </div>
   <%= form.hidden_field :user_id, value: current_user.id %>
-  <%= current_user.id%>
   <div>
     <%= form.submit %>
   </div>

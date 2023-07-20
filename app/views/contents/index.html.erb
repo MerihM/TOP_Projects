@@ -7,5 +7,6 @@
     <%= render content %>
   <% end %>
 </div>
-
+<%if user_signed_in?%>
 <%= link_to "New content", new_content_path %>
+<%end%>
