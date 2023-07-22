@@ -1,10 +1,12 @@
 <h1>Hello</h1>
-<% if @event.creator.id == current_user.id%>
-    <%= link_to "Delete article", event_path(@event), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  }, class:"btn btn-danger" %>
-<%else%>
+<%if user_signed_in?%>
+    <% if @event.creator.id == current_user.id%>
+        <%= link_to "Delete article", event_path(@event), data: {
+                        turbo_method: :delete,
+                        turbo_confirm: "Are you sure?"
+                    }, class:"btn btn-danger" %>
+    <%else%>
+        <%# <%= link_to 'Attend', events_users_path(@event), method: :post, confirm: 'really?' %> %>
 
-    
+    <%end%>
 <%end%>

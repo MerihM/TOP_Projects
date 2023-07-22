@@ -2,15 +2,16 @@ class EventsUsersController < ApplicationController
     before_action :require_login
 
     def create 
-        event = Event.find(params[:event_id])
-        eu = EventUser.new(event_id: event.id, user_id: params[:user_id])
+        user = User.find(current_user.id)
+        eu = EventsUser.new(event_id: @event.id, user_id: user.id)
+        eu.save
 
         if eu.save 
             flash[:notice] = "Enjoy event!"
-            redirect_to users_path(event_id: event.id)
+            redirect_to root_path
         else
             flash[:alert] = "Ooops! Something went wrong..."
-            redirect_to event_path(event)
+            redirect_to root_path
         end
     end
     
