@@ -16,11 +16,20 @@ class EventsController < ApplicationController
 
         if @event.save
             flash[:success] = "Event '#{@event.title}' created!"
-            redirect_to @event
+            redirect_to root_path
         else
             flash[:alert] = "Thera was an error"
             render 'new'
         end
+    end
+
+    private
+    # Using a private method to encapsulate the permissible parameters is
+    # a good pattern since you'll be able to reuse the same permit
+    # list between create and update. Also, you can specialize this method
+    # with per-user checking of permissible attributes.
+    def event_params
+      params.require(:event).permit(:title, :event_date, :user_id)
     end
     
 end
