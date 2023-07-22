@@ -23,6 +23,12 @@ class EventsController < ApplicationController
         end
     end
 
+    def destroy
+        @event = Event.find(params[:id])
+        @event.destroy
+
+        redirect_to root_path, status: :see_other
+    end
     private
     # Using a private method to encapsulate the permissible parameters is
     # a good pattern since you'll be able to reuse the same permit
