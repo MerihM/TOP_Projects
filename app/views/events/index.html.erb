@@ -11,7 +11,7 @@
   <div class="card-body">
     <blockquote class="blockquote mb-0">
       <p>A well-known quote, contained in a blockquote element.</p>
-      <footer class="blockquote-footer"><%=event.event_date%></footer>
+      <footer class="blockquote-footer"><%=event.event_date.strftime("%d.%m.%Y")%></footer>
     </blockquote>
     <div class="d-flex align-items-center justify-content-center pt-3">
         <%= link_to "Show Event", event_path(event), class:"btn btn-outline-info" %>
