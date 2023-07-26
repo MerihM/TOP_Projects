@@ -11,7 +11,7 @@
     <%else%>
         <% event = @event%>
         <%= event.id%>
-        <%= button_to 'Attend',  events_users_path(event), data: { turbo_method: :post }%>
+        <%= button_to 'Attend',  events_users_path(event, current_user), data: { turbo_method: :post }%>
 
     <%end%>
 <%end%>
