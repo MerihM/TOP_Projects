@@ -1,6 +1,9 @@
-<h1>Hello, <%= current_user.first_name%>, <%= current_user.id%></h1>
-
-
+<h1>Hello,
+<%if user_signed_in?%> <%= current_user.first_name%>
+<%else%>
+    guest
+<%end%>
+</h1>
 
 <%if user_signed_in?%>
     <% if @event.creator.id == current_user.id%>
@@ -9,9 +12,6 @@
                         turbo_confirm: "Are you sure?"
                     }, class:"btn btn-danger" %>
     <%else%>
-        <% event = @event%>
-        <%= event.id%>
-        <%= button_to 'Attend',  events_users_path(event, current_user), data: { turbo_method: :post }%>
-
+        <%# <%= button_to 'Attend',  events_users_path(event, current_user), data: { turbo_method: :post }%>
     <%end%>
 <%end%>
