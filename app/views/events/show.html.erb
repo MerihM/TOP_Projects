@@ -12,6 +12,6 @@
                         turbo_confirm: "Are you sure?"
                     }, class:"btn btn-danger" %>
     <%else%>
-        <%# <%= button_to 'Attend',  events_users_path(event, current_user), data: { turbo_method: :post }%>
+        <%= button_to 'Attend',  attendees_path(@event), data: { turbo_method: :post }%>
     <%end%>
 <%end%>
