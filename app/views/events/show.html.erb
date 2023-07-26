@@ -1,4 +1,4 @@
-<h1>Hello, <%= current_user.first_name%></h1>
+<h1>Hello, <%= current_user.first_name%>, <%= current_user.id%></h1>
 
 
 
@@ -9,7 +9,9 @@
                         turbo_confirm: "Are you sure?"
                     }, class:"btn btn-danger" %>
     <%else%>
-        <%# <%= link_to 'Attend', events_users_path(@event), method: :post, confirm: 'really?' %> %>
+        <% event = @event%>
+        <%= event.id%>
+        <%= button_to 'Attend',  events_users_path(event), data: { turbo_method: :post }%>
 
     <%end%>
 <%end%>

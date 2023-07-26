@@ -1,9 +1,12 @@
 class EventsUsersController < ApplicationController
-    before_action :require_login
+    before_action :authenticate_user!
+    # before_action :require_login
 
     def create 
-        user = User.find(current_user.id)
-        eu = EventsUser.new(event_id: @event.id, user_id: user.id)
+        # user = User.find(session[:user_id])
+        # eu = EventsUser.new(event_id: params[:id], user_id: session[:user_id])
+        eu = EventsUser.new(ev_us)
+        # eu.user_id = current_user.id
         eu.save
 
         if eu.save 
@@ -17,5 +20,13 @@ class EventsUsersController < ApplicationController
     
     def destroy
 
+    end
+
+
+    private
+
+    def ev_us
+        params.permit(:id)
+        devise_parameter_sanitizer.permit(:sign_up, keys: [:id])
     end
 end
