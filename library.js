@@ -32,7 +32,20 @@ const listOfBooks = library.books;
 function listBooks() {
     for (const book of listOfBooks) {
         console.log(book)
-        lib.innerHTML += book.name;
+        lib.innerHTML += card(book.name, book.author, book.pages, book.status);
         lib.innerHTML += '<br>';
     }
+}
+
+function card(title, author, pages, status) {
+    return `<div class="card" style="width: 18rem;">
+    <div class="card-header text-center">
+      ${title}
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item ">Author: ${author}</li>
+      <li class="list-group-item">Number of pages: ${pages} </li>
+      <li class="list-group-item">Read? ${status} </li>
+    </ul>
+  </div>`;
 }
