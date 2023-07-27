@@ -10,22 +10,45 @@
 </head>
 
 <body onload="listBooks()">
-    <div class="formView">
-        <form action="">
-            <div class="mb-3">
-                <label for="title" class="form-label">Book Title</label>
-                <input type="text" class="form-control" id="title" placeholder="The Hobbit">
+
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form action="">
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Book Title</label>
+                            <input type="text" class="form-control" id="title" placeholder="The Hobbit">
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Author</label>
+                            <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkien">
+                        </div>
+                        <div class="mb-3">
+                            <label for="pages" class="form-label">Number of pages</label>
+                            <input type="number" class="form-control" id="pages" placeholder="300">
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary save">Save changes</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class="mb-3">
-                <label for="author" class="form-label">Author</label>
-                <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkien">
-            </div>
-            <div class="mb-3">
-                <label for="pages" class="form-label">Number of pages</label>
-                <input type="number" class="form-control" id="pages" placeholder="300">
-            </div>
-        </form>
+        </div>
     </div>
+
     <br>
     <div class="library d-xxl-flex justify-content-evenly flex-md-wrap">
 
