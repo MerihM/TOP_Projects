@@ -35,6 +35,7 @@ const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookStatus = document.querySelector('#status');
 const listOfBooks = library.books;
+const myModal = new bootstrap.Modal('#exampleModal')
 function listBooks() {
     for (const book of listOfBooks) {
         console.log(book)
@@ -42,16 +43,17 @@ function listBooks() {
     }
 }
 
-bookTitle.addEventListener('keydown', (e) => write(e))
-function write(e) {
-    console.log(e);
-    console.log(bookStatus.value);
-}
 
 function addToLibrary() {
-    newBook = new Book(bookTitle.value, bookAuthor.value, bookPages, bookStatus);
+    newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
     library.addBook(newBook);
-    listBooks;
+    while (lib.firstChild) {
+        lib.removeChild(lib.firstChild);
+    }
+    listBooks();
+    myModal.hide();
+    bookAuthor.value = bookPages.value = bookTitle.value = "";
+    bookStatus.checked = false;
 }
 
 function card(title, author, pages, status) {
