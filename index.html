@@ -11,48 +11,48 @@
 
 <body onload="listBooks()">
 
+    <div class="d-flex justify-content-center align-items-center mt-5">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Add book to library
+        </button>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Add book to library
-    </button>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">New book</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="">
-                        <div class="mb-3">
-                            <label for="title" class="form-label">Book Title</label>
-                            <input type="text" class="form-control" id="title" placeholder="The Hobbit">
-                        </div>
-                        <div class="mb-3">
-                            <label for="author" class="form-label">Author</label>
-                            <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkien">
-                        </div>
-                        <div class="mb-3">
-                            <label for="pages" class="form-label">Number of pages</label>
-                            <input type="number" class="form-control" id="pages" placeholder="300">
-                        </div>
-                        <div class="form-check form-switch">
-                            <label class="form-check-label" for="status">Reading</label>
-                            <input class="form-check-input" type="checkbox" role="switch" id="status">
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary save">Save changes</button>
-                        </div>
-                    </form>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">New book</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="">
+                            <div class="mb-3">
+                                <label for="title" class="form-label">Book Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="The Hobbit">
+                            </div>
+                            <div class="mb-3">
+                                <label for="author" class="form-label">Author</label>
+                                <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkien">
+                            </div>
+                            <div class="mb-3">
+                                <label for="pages" class="form-label">Number of pages</label>
+                                <input type="number" class="form-control" id="pages" placeholder="300">
+                            </div>
+                            <div class="form-check form-switch">
+                                <label class="form-check-label" for="status">Reading</label>
+                                <input class="form-check-input" type="checkbox" role="switch" id="status">
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary save">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
     <br>
     <div class="container text-center">
         <div class="library row">

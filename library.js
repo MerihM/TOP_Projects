@@ -2,7 +2,10 @@ function Book(name = "Unknown", author = "Unknown", pages = 0, status = false) {
     this.name = name;
     this.author = author;
     this.pages = pages;
-    this.status = status;
+    if (status)
+        this.status = 'Read';
+    else
+        this.status = 'Not read';
 }
 
 function Library() {
@@ -24,15 +27,8 @@ function Library() {
 
 
 hobbit = new Book('The Hobbit', "J.R.R. Tolkien", 295, false)
-hobbit1 = new Book('The Hobbit1', "J.R.R. Tolkien", 295, false)
-hobbit2 = new Book('The Hobbit2', "J.R.R. Tolkien", 295, false)
-hobbit3 = new Book('The Hobbit3', "J.R.R. Tolkien", 295, false)
 let library = new Library
 library.addBook(hobbit);
-library.addBook(hobbit1);
-library.addBook(hobbit2);
-library.addBook(hobbit3);
-console.log(library.books)
 const lib = document.querySelector('.library');
 const listOfBooks = library.books;
 function listBooks() {
@@ -50,7 +46,7 @@ function card(title, author, pages, status) {
     <ul class="list-group list-group-flush">
       <li class="list-group-item ">Author: ${author}</li>
       <li class="list-group-item">Number of pages: ${pages} </li>
-      <li class="list-group-item">Read? ${status} </li>
+      <li class="list-group-item">${status} </li>
     </ul>
   </div>`;
 }
