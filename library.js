@@ -21,3 +21,18 @@ function Library() {
         this.books = this.books.filter((book) => book.name !== title)
     }
 }
+
+
+hobbit = new Book('The Hobbit', "J.R.R. Tolkien", 295, false)
+let library = new Library
+library.addBook(hobbit);
+console.log(library.books)
+const lib = document.querySelector('.library');
+const listOfBooks = library.books;
+function listBooks() {
+    for (const book of listOfBooks) {
+        console.log(book)
+        lib.innerHTML += book.name;
+        lib.innerHTML += '<br>';
+    }
+}
