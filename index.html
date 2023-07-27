@@ -12,11 +12,22 @@
 <body onload="listBooks()">
     <div class="formView">
         <form action="">
-
+            <div class="mb-3">
+                <label for="title" class="form-label">Book Title</label>
+                <input type="text" class="form-control" id="title" placeholder="The Hobbit">
+            </div>
+            <div class="mb-3">
+                <label for="author" class="form-label">Author</label>
+                <input type="text" class="form-control" id="author" placeholder="J.R.R. Tolkien">
+            </div>
+            <div class="mb-3">
+                <label for="pages" class="form-label">Number of pages</label>
+                <input type="number" class="form-control" id="pages" placeholder="300">
+            </div>
         </form>
     </div>
     <br>
-    <div class="library" style="width:100px; height: 100px; background-color: green;">
+    <div class="library d-xxl-flex justify-content-evenly flex-md-wrap">
 
     </div>
     <script src="library.js"></script>

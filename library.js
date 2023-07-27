@@ -33,7 +33,6 @@ function listBooks() {
     for (const book of listOfBooks) {
         console.log(book)
         lib.innerHTML += card(book.name, book.author, book.pages, book.status);
-        lib.innerHTML += '<br>';
     }
 }
 
