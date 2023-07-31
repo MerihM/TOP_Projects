@@ -69,6 +69,7 @@ function card(title, author, pages, status) {
       <li class="list-group-item ">Author: ${author}</li>
       <li class="list-group-item">Number of pages: ${pages} </li>
       <li class="list-group-item">${status} </li>
+      <li class="list-group-item btn btn-outline-danger rounded-0">Delete from library</li>
     </ul>
   </div>`;
 }
