@@ -1,7 +1,8 @@
-function Book(name = "Unknown", author = "Unknown", pages = 0, status = false) {
+function Book(name = "Unknown", author = "Unknown", pages = 0, status = false, id = index) {
     this.name = name;
     this.author = author;
     this.pages = pages;
+    this.id = id;
     if (status)
         this.status = 'Read';
     else
@@ -26,20 +27,18 @@ function Library() {
 }
 
 
-hobbit = new Book('The Hobbit', "J.R.R. Tolkien", 295, false)
 let library = new Library
-library.addBook(hobbit);
-const lib = document.querySelector('.library');
+let lib = document.querySelector('.library');
 const bookTitle = document.querySelector('#title');
 const bookAuthor = document.querySelector('#author');
 const bookPages = document.querySelector('#pages');
 const bookStatus = document.querySelector('#status');
-const listOfBooks = library.books;
-const myModal = new bootstrap.Modal('#exampleModal')
+const myModal = new bootstrap.Modal('#exampleModal');
+let index = 0;
 function listBooks() {
-    for (const book of listOfBooks) {
-        console.log(book)
-        lib.innerHTML += card(book.name, book.author, book.pages, book.status);
+    for (const book of library.books) {
+        lib.innerHTML += card(book.name, book.author, book.pages, book.status, book.id);
+        index++;
     }
 }
 
@@ -54,14 +53,20 @@ function addToLibrary() {
 }
 
 function renderLib() {
+    lib = document.querySelector('.library');
     while (lib.firstChild) {
         lib.removeChild(lib.firstChild);
     }
     listBooks();
 }
 
-function card(title, author, pages, status) {
-    return `<div class="card p-0 m-3" style="width: 18rem;">
+function deleteBook(title) {
+    library.removeBook(title);
+    renderLib();
+}
+
+function card(title, author, pages, status, id) {
+    return `<div class="card p-0 m-3" style="width: 18rem;" id="book-${id}">
     <div class="card-header text-center">
       ${title}
     </div>
@@ -69,7 +74,7 @@ function card(title, author, pages, status) {
       <li class="list-group-item ">Author: ${author}</li>
       <li class="list-group-item">Number of pages: ${pages} </li>
       <li class="list-group-item">${status} </li>
-      <li class="list-group-item btn btn-outline-danger rounded-0">Delete from library</li>
+      <li class="list-group-item btn btn-outline-danger rounded-0" onclick="deleteBook('${title}')">Delete from library</li>
     </ul>
   </div>`;
 }
