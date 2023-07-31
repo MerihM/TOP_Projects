@@ -47,13 +47,17 @@ function listBooks() {
 function addToLibrary() {
     newBook = new Book(bookTitle.value, bookAuthor.value, bookPages.value, bookStatus.checked);
     library.addBook(newBook);
+    renderLib();
+    myModal.hide();
+    bookAuthor.value = bookPages.value = bookTitle.value = "";
+    bookStatus.checked = false;
+}
+
+function renderLib() {
     while (lib.firstChild) {
         lib.removeChild(lib.firstChild);
     }
     listBooks();
-    myModal.hide();
-    bookAuthor.value = bookPages.value = bookTitle.value = "";
-    bookStatus.checked = false;
 }
 
 function card(title, author, pages, status) {
