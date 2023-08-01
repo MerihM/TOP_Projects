@@ -22,5 +22,10 @@
     place-items: center;
     height: 100%;
     width: 100%;
-    padding-top: 20%;
+    margin-top: 20%;
+}
+
+#ng {
+    margin-bottom: 1%;
+    margin-left: 6%;
 }
