@@ -1,0 +1,19 @@
+<div id="<%= dom_id content %>">
+<div class="card">
+  <div class="card-header">
+    <%= content.title%>
+  </div>
+  <div class="card-body">
+      <%= content.body%>
+      <br>  
+      <br>
+      <footer class="blockquote-footer">By: 
+      <%if user_signed_in?%>
+        <%= User.find(content.user_id).username%>
+        <%else%>
+        anonymous
+        <%end%>
+      </footer>
+  </div>
+</div>
+</div>

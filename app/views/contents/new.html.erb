@@ -1,0 +1,14 @@
+<%if user_signed_in?%>
+<h1>New content</h1>
+
+<%= render "form", content: @content %>
+
+<br>
+
+<div>
+  <%= link_to "Back to contents", contents_path %>
+</div>
+<%else%>
+  <h1>Please log in!!!</h1>
+  <%= link_to "Back", :back %>
+<%end%>
