@@ -1,0 +1,152 @@
+@font-face {
+    font-family: "Bahiana";
+    src: url(../fonts/Bahiana-for-Print/Bahiana-Regular.otf);
+}
+
+@font-face {
+    font-family: "HussarSzturm";
+    src: url(../fonts/HussarSzturm/HussarSzturm.otf);
+}
+
+@font-face {
+    font-family: "JM_Nexus";
+    src: url(../fonts/jm-nexus-font/J.M.Nexus-Grotesque.ttf);
+}
+
+@font-face {
+    font-family: "Lib_Font";
+    src: url(../fonts/lib-font/LibHandDis/LibHandDis-Regular.otf);
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url(../fonts/oswald/Oswald-Stencbab.ttf);
+}
+
+body {
+    font-family: Oswald;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(32, 26, 26);
+}
+
+.groupOfTwo {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 1% 0;
+}
+
+.group {
+    display: flex;
+    flex-direction: column;
+}
+
+.logoGroup {
+    display: flex;
+    width: 30vw;
+    align-items: center;
+    justify-content: space-evenly;
+    position: relative;
+    top: -50%;
+    background-color: black;
+    opacity: 70%;
+    color: wheat;
+
+}
+
+.logoPart {
+    height: 100vh;
+    width: 40vw;
+    border: solid black 2px
+}
+
+.forBG {
+    width: 100%;
+    height: 100%;
+}
+
+.formPart {
+    background-color: rgb(222, 217, 207);
+}
+
+form {
+    padding-top: 10%;
+    height: 70%;
+}
+
+.formHeader {
+    display: flex;
+    justify-content: space-between;
+    padding: 2% 10%;
+}
+
+fieldset {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.formFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2%;
+}
+
+.text {
+    padding: 2% 2% 0 2%;
+}
+
+.formFooter>p {
+    padding-top: 2%;
+}
+
+label {
+    font-size: 12px;
+    padding-bottom: 2%;
+}
+
+button {
+    width: 20%;
+    background-color: rgb(47, 144, 27);
+    border-radius: 5%;
+    border: 0px solid white;
+    padding: 1% 0;
+    font-family: JM_Nexus;
+}
+
+a:visited,
+a {
+    text-decoration: none;
+    color: rgb(32, 26, 26);
+}
+
+input {
+    border: solid black 2px;
+    border-radius: 5px;
+}
+
+input[required]:valid,
+.valid {
+    border-bottom: solid rgb(29, 198, 29) 2px;
+    border-right: solid rgb(29, 198, 29) 2px;
+    box-shadow: 2px 2px 4px rgb(29, 198, 29);
+}
+
+input:invalid,
+.invalid {
+    box-shadow: 2px 2px 4px rgb(235, 18, 18);
+}
+
+span,
+.required {
+    color: red;
+}
+
+.required {
+    position: relative;
+    font-size: 12px;
+    top: -24vh;
+    left: 30vw;
+}
