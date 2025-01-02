@@ -1,0 +1,19 @@
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Phonebook</title>
+</head>
+<body>
+  <h1>Phonebook</h1>
+  <table>
+    <% if arr.kind_of?(Array) %>
+      <th>Phone Number</th>
+        <% arr.each do |mem| %>
+        <tr>
+          <td><%= "#{mem}" %></td>
+        </tr>
+        <% end %>
+    <% end %>
+  </table>
+</body>
+</html>
