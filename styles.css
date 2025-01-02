@@ -1,0 +1,26 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.gridContainer {
+    margin-top: 20vh;
+    width: 500px;
+    height: 500px;
+    display: grid;
+    grid-template-columns: repeat(16, 1fr);
+    grid-template-rows: repeat(16, 1fr);
+    border: 1px solid black;
+}
+
+.contentContainer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.choice {
+    display: flex;
+    flex-direction: column;
+    gap: 6vh;
+}
