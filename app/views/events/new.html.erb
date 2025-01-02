@@ -1,0 +1,13 @@
+<%if !current_user.first_name || !current_user.last_name%>
+    <%if !current_user.first_name%>
+        <p>No first name</p>
+    <%end%>
+    <%if !current_user.last_name%>
+        <p>No last name</p>
+    <%end%>
+    <p>Please add everything that is missing</p>
+    <%= link_to "Edit profile", edit_user_registration_path, class:"btn btn-warning"%>
+<%else%>
+    <h2>Create Event</h2>
+    <%= render 'form', event: @event%>
+<%end%>

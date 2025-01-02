@@ -1,0 +1,28 @@
+<%= form_with(model: event, local: true) do |f|%>
+
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <%= f.label :title, class:'col-form-label'%>
+        </div>
+        <div class="col-auto">
+            <%= f.text_field :title, class:'form-control'%>
+        </div>
+    </div>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <%= f.label :event_date, class:'col-form-label'%>
+        </div>
+        <div class="col-auto">
+            <%= f.date_select :event_date, type: 'date', class:'form-control'%>
+        </div>
+    </div>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <div class="row g-3 align-items-center">
+        <div class="col-auto">
+            <%= f.submit 'Create Event', class:'btn btn-outline-secondary'%>
+        </div>
+        <div class="col-auto">
+            <%= link_to "Cancel", root_path, class:'btn btn-outline-secondary'%>
+        </div>
+    </div>
+<%end%>
