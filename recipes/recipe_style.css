@@ -1,0 +1,27 @@
+.img-med {
+    height: auto;
+    width: 200px;
+    margin-left: 40%;
+}
+
+h1,
+h2 {
+    text-align: center;
+}
+
+body {
+    background-color: rgba(40, 78, 40, 0.589);
+}
+
+ul {
+    list-style: none;
+}
+
+li {
+    padding-bottom: 15px;
+}
+
+ol {
+    padding-top: 15px;
+    padding-bottom: 0%;
+}

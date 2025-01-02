@@ -1,0 +1,17 @@
+body {
+    background-color: rgba(10, 54, 92, 0.589);
+}
+
+h1 {
+    text-align: center;
+}
+
+a {
+    color: rgb(192, 34, 34);
+    text-decoration: none;
+    padding-left: 20px;
+}
+
+div {
+    margin-left: 37%;
+}
